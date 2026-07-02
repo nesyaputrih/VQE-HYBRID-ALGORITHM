@@ -3,16 +3,15 @@ config.py
 =========
 Konfigurasi terpusat untuk program VQE Hybrid Algorithm.
 Semua pilihan parameter diatur di sini dan diimpor oleh modul lain.
+
+[VERSION] 2026-06-30-v4-restart-sanity-check
 """
 
 # ─────────────────────────────────────────────
 # 1. PILIHAN MOLEKUL
 # ─────────────────────────────────────────────
 # Opsi: "H2" | "H2O" | "CH4"
-MOLECULE = "H2O"
-
-# Opsi: True | False
-USE_OPTIMIZED_GEOMETRY = False
+MOLECULE = "CH4"
 
 # ─────────────────────────────────────────────
 # 2. ACTIVE SPACE
@@ -23,8 +22,8 @@ ACTIVE_SPACE_METHOD = "CASCI"
 
 # Jumlah elektron aktif dan orbital aktif
 # H2   → (2e, 2o)  | H2O → (4e, 4o) atau (8e, 6o) | CH4 → (8e, 8o)
-N_ACTIVE_ELECTRONS = 4
-N_ACTIVE_ORBITALS  = 4
+N_ACTIVE_ELECTRONS = 8
+N_ACTIVE_ORBITALS  = 8
 
 # Jumlah orbital frozen core (diabaikan dari active space)
 # H2 → 0 | H2O → 1 | CH4 → 1
@@ -46,11 +45,13 @@ ANSATZ_TYPE = "ADAPT-VQE"
 K_UPCCGSD = 1
 
 # Parameter ADAPT-VQE
-ADAPT_MAX_ITER    = 50       # iterasi maksimum ADAPT
-ADAPT_GRAD_TOL    = 1e-5     # toleransi gradien untuk konvergensi
+ADAPT_MAX_ITER    = 100      # iterasi maksimum ADAPT (naik dari 50, pool lebih besar)
+ADAPT_GRAD_TOL    = 1e-5     # toleransi gradien lebih ketat (was 1e-4)
 ADAPT_POOL        = "UCCSD"  # operator pool: "UCCSD" | "GSD" | "QUBIT"
-ADAPT_PLATEAU_N   = 5        # stop jika energi stagnan N iterasi berturut-turut
-ADAPT_PLATEAU_TOL = 1e-8     # threshold plateau energi (Ha)
+ADAPT_PLATEAU_N   = 8        # lebih toleran sebelum declare plateau (was 5)
+ADAPT_PLATEAU_TOL = 1e-9     # threshold plateau energi lebih ketat (Ha)
+ADAPT_MAX_RESTARTS = 5       # jumlah retry jika kualitas belum memadai
+ADAPT_QUALITY_GAP_TOL = 0.005  # gap target ~5 mHa (mendekati chem. acc 1.6 mHa)
 
 # ─────────────────────────────────────────────
 # 5. OPTIMIZER
@@ -71,8 +72,8 @@ RMSPROP_EPSILON = 1e-8
 # 6. SCAN POTENTIAL ENERGY SURFACE (PES)
 # ─────────────────────────────────────────────
 # Rentang panjang ikatan (Angstrom) untuk scan PES
-BOND_LENGTHS = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
-                1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
+BOND_LENGTHS = [0.5, 0.6, 0.7, 0.74, 0.8, 0.9, 1.0,
+                1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.5, 3.0]
 
 # Pasangan atom yang panjang ikatannya divariasikan
 # H2  → ("H1", "H2")

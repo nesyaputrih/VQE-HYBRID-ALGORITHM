@@ -27,15 +27,19 @@ def _h2o_geometry(r_oh: float, angle_deg: float = 104.5) -> str:
     H2O: O di pusat, dua H dengan sudut HOH.
     Sudut tetap pada 104.5° (eksperimental); hanya r_OH yang divariasikan.
     """
-    angle_rad = np.deg2rad(angle_deg / 2)
-    hx = r_oh * np.sin(angle_rad)
-    hz = r_oh * np.cos(angle_rad)
+    #angle_rad = np.deg2rad(angle_deg / 2)
+    #hx = r_oh * np.sin(angle_rad)
+    #hz = r_oh * np.cos(angle_rad)
+    #return f"""
+    #O   0.0   0.0   0.0
+    #H1  {hx:.6f}  0.0   {hz:.6f}
+    #H2  {-hx:.6f}  0.0   {hz:.6f}
+    #"""
     return f"""
-    O   0.0   0.0   0.0
-    H1  {hx:.6f}  0.0   {hz:.6f}
-    H2  {-hx:.6f}  0.0   {hz:.6f}
+    O   0.000000   0.000000   0.000000
+    H1  0.000000   0.000000   {r_oh:.6f}
+    H2  -0.860362  0.209382   0.393570
     """
-
 
 def _ch4_geometry(r_ch: float) -> str:
     """

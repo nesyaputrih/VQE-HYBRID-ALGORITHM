@@ -49,8 +49,8 @@ STYLE = {
 COLOR = {
     "vqe"    : "#1f77b4",   # biru
     "fci"    : "#d62728",   # merah
-    "cas"    : "#2ca02c",   # hijau
-    "hf"     : "#9467bd",   # ungu
+    #"cas"    : "#2ca02c",   # hijau
+    #"hf"     : "#9467bd",   # ungu
     "error"  : "#ff7f0e",   # oranye
     "chem"   : "#7f7f7f",   # abu
 }
@@ -71,11 +71,28 @@ def load_results(json_path: str) -> list:
 
 
 def _arrays(data: list):
-    """Ekstrak array numpy dari list result."""
+    """
+    Ekstrak array numpy dari list result.
+
+    Catatan penting soal `err`:
+    Error VQE dihitung terhadap `e_fci_active` (FCI DI DALAM active space),
+    bukan `e_fci` (FCI penuh dari PySCF). `e_fci_active` adalah batas atas
+    yang sebenarnya bisa dicapai VQE (lihat vqe_runner.py: `quality_ref =
+    e_fci_active`), sedangkan `e_fci` penuh mengandung korelasi di luar
+    active space yang memang tidak bisa diperbaiki oleh ansatz VQE apa pun
+    pada CAS ini. Memakai `e_fci` penuh untuk error akan mencampur error
+    VQE asli dengan gap intrinsik CAS-vs-full-FCI (yang membesar di
+    geometri disosiatif), sehingga error tampak jauh lebih besar dari
+    yang sebenarnya bisa dikoreksi VQE.
+    """
     r    = np.array([d["bond_length"]   for d in data])
     evqe = np.array([d["e_vqe"]         for d in data])
     efci = np.array([
         d.get("e_fci") if d.get("e_fci") is not None else np.nan
+        for d in data
+    ])
+    efci_active = np.array([
+        d.get("e_fci_active") if d.get("e_fci_active") is not None else np.nan
         for d in data
     ])
     ecas = np.array([
@@ -86,8 +103,9 @@ def _arrays(data: list):
         d.get("e_hf") if d.get("e_hf") is not None else np.nan
         for d in data
     ])
-    err  = np.abs(evqe - efci)
-    return r, evqe, efci, ecas, ehf, err
+    # Error sekarang terhadap FCI DALAM active space (target sesungguhnya VQE)
+    err  = np.abs(evqe - efci_active)
+    return r, evqe, efci, efci_active, ecas, ehf, err
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -99,7 +117,7 @@ def plot_pes(data: list, save_path: str, prefix: str = ""):
     Plot PES: E (Ha) vs r (Å).
     Garis: VQE, FCI (referensi), CAS (CASCI/CASSCF), HF.
     """
-    r, evqe, efci, ecas, ehf, err = _arrays(data)
+    r, evqe, efci, efci_active, ecas, ehf, err = _arrays(data)
     cfg = data[0].get("config", {})
 
     method   = cfg.get("method",   config.ACTIVE_SPACE_METHOD)
@@ -114,8 +132,11 @@ def plot_pes(data: list, save_path: str, prefix: str = ""):
         fig, ax = plt.subplots(figsize=(6.5, 4.5))
 
         # ── Kurva energi ──────────────────────────────────────────────────────
+        # PES sekarang pakai e_fci_active (FCI DALAM active space) sebagai
+        # kurva referensi, bukan e_fci penuh — ini target yang benar2 relevan
+        # untuk mengevaluasi kualitas ansatz VQE pada CAS ini.
         ax.plot(r, evqe, "o-",  color=COLOR["vqe"], label=f"VQE ({ansatz}/{enc}/{opt})")
-        ax.plot(r, efci, "s--", color=COLOR["fci"], label="FCI (referensi)")
+        ax.plot(r, efci_active, "s--", color=COLOR["fci"], label="FCI (dalam active space)")
         #ax.plot(r, ecas, "^-.", color=COLOR["cas"], label=f"{method} CAS({n_ae},{n_ao})")
         #ax.plot(r, ehf,  "v:",  color=COLOR["hf"],  label="Hartree-Fock")
 
@@ -145,7 +166,7 @@ def plot_error(data: list, save_path: str, prefix: str = ""):
     Plot error |E_VQE - E_FCI| (Ha) vs r (Å).
     Termasuk garis chemical accuracy (1.6 mHa).
     """
-    r, evqe, efci, ecas, ehf, err = _arrays(data)
+    r, evqe, efci, efci_active, ecas, ehf, err = _arrays(data)
     cfg = data[0].get("config", {})
 
     method   = cfg.get("method",   config.ACTIVE_SPACE_METHOD)
@@ -161,8 +182,9 @@ def plot_error(data: list, save_path: str, prefix: str = ""):
     with plt.rc_context(STYLE):
         fig, ax = plt.subplots(figsize=(6.5, 4.0))
 
+        # err = |E_VQE - E_FCI_active|, lihat catatan di _arrays()
         ax.semilogy(r, err, "o-", color=COLOR["error"],
-                    label=f"|E_VQE − E_FCI|")
+                    label=f"|E_VQE − E_FCI(active space)|")
 
         ax.axhline(chem_acc, ls="--", color=COLOR["chem"], lw=1.4,
                    label=f"Chemical accuracy ({chem_acc*1e3:.1f} mHa ≈ 1 kcal/mol)")
@@ -171,8 +193,8 @@ def plot_error(data: list, save_path: str, prefix: str = ""):
         ax.fill_between(r, 0, chem_acc, alpha=0.08, color=COLOR["chem"])
 
         ax.set_xlabel(r"Panjang Ikatan ($\AA$)")
-        ax.set_ylabel(r"$|E_\mathrm{VQE} - E_\mathrm{FCI}|$ (Ha)")
-        title = (f"Error Energi VQE terhadap FCI — {molecule}\n"
+        ax.set_ylabel(r"$|E_\mathrm{VQE} - E_\mathrm{FCI,\,active}|$ (Ha)")
+        title = (f"Error Energi VQE terhadap FCI (active space) — {molecule}\n"
                  f"{method}/CAS({n_ae},{n_ao}) → VQE-{ansatz} [{enc}/{opt}]")
         ax.set_title(title, pad=8)
         ax.legend(loc="upper right")
@@ -212,15 +234,16 @@ def plot_convergence(data: list, bond_length: float, save_path: str):
     molecule = cfg.get("molecule", config.MOLECULE)
     opt      = cfg.get("optimizer", config.OPTIMIZER_TYPE)
     ansatz   = cfg.get("ansatz",    config.ANSATZ_TYPE)
-    efci     = d.get("e_fci")
+    efci_active = d.get("e_fci_active")
 
     with plt.rc_context(STYLE):
         fig, ax = plt.subplots(figsize=(6.0, 4.0))
 
         ax.plot(iters, energi, "-", color=COLOR["vqe"], lw=1.5,
                 label=f"VQE ({opt})")
-        if efci:
-            ax.axhline(efci, ls="--", color=COLOR["fci"], lw=1.2, label="E_FCI")
+        if efci_active is not None:
+            ax.axhline(efci_active, ls="--", color=COLOR["fci"], lw=1.2,
+                       label="E_FCI (active space)")
 
         ax.set_xlabel("Evaluasi Fungsi")
         ax.set_ylabel("Energi (Ha)")
@@ -259,6 +282,12 @@ def main(json_path: str = None):
         sys.exit(1)
 
     data   = load_results(json_path)
+
+    if not data:
+        print(f"[Plot] Tidak ada data valid di {json_path} — semua titik error.")
+        print("[Plot] Periksa output VQE terlebih dahulu.")
+        sys.exit(1)
+
     prefix = config.output_prefix()
     plots  = Path(config.PLOTS_DIR)
     plots.mkdir(parents=True, exist_ok=True)
