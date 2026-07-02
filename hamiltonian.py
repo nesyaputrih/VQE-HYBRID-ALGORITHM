@@ -17,7 +17,6 @@ from qiskit_nature.second_q.mappers import (
 from qiskit_nature.second_q.operators import FermionicOp
 import config
 
-
 # ──────────────────────────────────────────────────────────────────────────────
 # Helper: mapper selector
 # ──────────────────────────────────────────────────────────────────────────────
