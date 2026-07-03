@@ -46,13 +46,19 @@ def _ch4_geometry(r_ch: float) -> str:
     CH4: geometri tetrahedral menggunakan koordinat Kartesian.
     Empat H pada sudut tetrahedral simetris di sekitar C.
     """
-    d = r_ch / np.sqrt(3)
+    #d = r_ch / np.sqrt(3)
+    #return f"""
+    #C   0.0       0.0       0.0
+    #H1  {d:.6f}   {d:.6f}   {d:.6f}
+    #H2  {-d:.6f}  {-d:.6f}  {d:.6f}
+    #H3  {-d:.6f}  {d:.6f}   {-d:.6f}
+    #H4  {d:.6f}   {-d:.6f}  {-d:.6f}
     return f"""
-    C   0.0       0.0       0.0
-    H1  {d:.6f}   {d:.6f}   {d:.6f}
-    H2  {-d:.6f}  {-d:.6f}  {d:.6f}
-    H3  {-d:.6f}  {d:.6f}   {-d:.6f}
-    H4  {d:.6f}   {-d:.6f}  {-d:.6f}
+    C   0.000000   0.000000   0.000000
+    H   0.000000   0.000000  {r_ch}
+    H  -0.907297  -0.496407  -0.351129
+    H   0.673211   0.167304  -0.843621
+    H  -0.261596   0.958896   0.452753
     """
 
 
