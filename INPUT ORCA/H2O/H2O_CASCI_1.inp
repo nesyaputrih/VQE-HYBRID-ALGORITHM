@@ -1,0 +1,20 @@
+! CASSCF STO-3G
+%pal
+  nprocs 4
+end
+
+%casscf
+  nel     4
+  norb    4
+  maxiter 1
+end
+
+%paras
+  R = 0.50, 3.00, 16
+end
+
+* xyz 0 1
+O   0.000000   0.000000   0.000000
+H   0.000000   0.000000  {R}
+H  -0.860362   0.209382   0.393570
+*

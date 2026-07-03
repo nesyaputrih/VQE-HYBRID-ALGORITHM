@@ -1,0 +1,28 @@
+! CASSCF STO-3G SlowConv
+%pal
+  nprocs 4
+end
+
+%casscf
+  nel     4
+  norb    4
+  maxiter 500
+  orbstep diis
+  switchstep nr
+end
+
+%scf
+  maxiter 500
+end
+
+%paras
+  R = 0.50, 3.00, 16
+end
+
+* xyz 0 1
+C   0.000000   0.000000   0.000000
+H   0.000000   0.000000  {R}
+H  -0.907297  -0.496407  -0.351129
+H   0.673211   0.167304  -0.843621
+H  -0.261596   0.958896   0.452753
+*
