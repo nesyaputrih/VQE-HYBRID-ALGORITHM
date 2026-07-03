@@ -1,0 +1,1337 @@
+========================================================
+  VQE Hybrid Algorithm — HPC BRIN
+  User      : nhandayani
+  Job ID    : 496217
+  Node      : trembesi70
+  CPUs      : 12
+  Mem       : 65536 MB
+  Mulai     : 2026-07-01 16:32:38
+  Output    : /mgpfs/home/nhandayani/vqe_hybrid/output
+  Plot      : /mgpfs/home/nhandayani/vqe_hybrid/plot
+  Log/Error : /mgpfs/home/nhandayani/vqe_hybrid/error
+========================================================
+
+[ENV] Python  : Python 3.10.20
+[ENV] Lokasi  : /mgpfs/home/nhandayani/.conda/envs/mycenvn/bin/python
+[ENV] Conda   : mycenvn               *  /mgpfs/home/nhandayani/.conda/envs/mycenvn
+[ENV] PySCF       : 2.13.0
+[ENV] OpenFermion : 1.7.1
+[ENV] Qiskit      : 2.3.1
+[ENV] Qiskit-Nat  : 0.7.2
+
+[CONFIG] Konfigurasi aktif:
+MOLECULE = "H2O"
+ACTIVE_SPACE_METHOD = "CASCI"
+N_ACTIVE_ELECTRONS = 4
+N_ACTIVE_ORBITALS  = 4
+ENCODING = "JW"
+ANSATZ_TYPE = "ADAPT-VQE"
+OPTIMIZER_TYPE = "L-BFGS-B"
+BASIS = "sto-3g"
+
+[RUN] Memulai VQE PES scan ...
+  [H2O] r = 0.500 Å  →  7 AO, 10 elektron
+  [H2O] r = 0.600 Å  →  7 AO, 10 elektron
+  [H2O] r = 0.700 Å  →  7 AO, 10 elektron
+  [H2O] r = 0.740 Å  →  7 AO, 10 elektron
+  [H2O] r = 0.800 Å  →  7 AO, 10 elektron
+  [H2O] r = 0.900 Å  →  7 AO, 10 elektron
+  [H2O] r = 1.000 Å  →  7 AO, 10 elektron
+  [H2O] r = 1.200 Å  →  7 AO, 10 elektron
+  [H2O] r = 1.400 Å  →  7 AO, 10 elektron
+  [H2O] r = 1.600 Å  →  7 AO, 10 elektron
+  [H2O] r = 1.800 Å  →  7 AO, 10 elektron
+  [H2O] r = 2.000 Å  →  7 AO, 10 elektron
+  [H2O] r = 2.200 Å  →  7 AO, 10 elektron
+  [H2O] r = 2.500 Å  →  7 AO, 10 elektron
+  [H2O] r = 3.000 Å  →  7 AO, 10 elektron
+
+[PES Scan] H2O: 15 titik ikatan
+[PES Scan] Mulai: 2026-07-01 16:32:44
+
+[PES Scan] Titik 1/15
+
+============================================================
+  VQE: H2O  r = 0.500 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -67.35867319 Ha
+  E_total (CASCI) = -73.93968152 Ha
+  FermionicOp suku: 569
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.47 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -72.68127606 Ha
+  E_FCI (dalam AS) = -73.93968152 Ha  ← batas VQE
+  E_FCI (penuh)    = -73.96732029 Ha  ← referensi literatur
+  Gap AS vs penuh  = 27.64 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.093730 (grad 0.1s) | E=-72.68273855 Ha  ΔE=7.27e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.087492 (grad 0.0s) | E=-72.68401650 Ha  ΔE=1.28e-03 | opt 0.2s | iter 0.2s
+  [ADAPT iter   3] max|grad|=0.068414 (grad 0.0s) | E=-72.69831589 Ha  ΔE=1.43e-02 | opt 0.5s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.046976 (grad 0.0s) | E=-72.69927365 Ha  ΔE=9.58e-04 | opt 0.7s | iter 0.7s
+  [ADAPT iter   5] max|grad|=0.045009 (grad 0.0s) | E=-72.69991229 Ha  ΔE=6.39e-04 | opt 0.9s | iter 1.0s
+  [ADAPT iter   6] max|grad|=0.042195 (grad 0.0s) | E=-72.70064715 Ha  ΔE=7.35e-04 | opt 1.1s | iter 1.2s
+  [ADAPT iter   7] max|grad|=0.032685 (grad 0.0s) | E=-72.70141622 Ha  ΔE=7.69e-04 | opt 2.0s | iter 2.1s
+  [ADAPT iter   8] max|grad|=0.028841 (grad 0.0s) | E=-73.31040388 Ha  ΔE=6.09e-01 | opt 7.1s | iter 7.2s
+  [ADAPT iter   9] max|grad|=0.286914 (grad 0.0s) | E=-73.33194152 Ha  ΔE=2.15e-02 | opt 3.1s | iter 3.2s
+  [ADAPT iter  10] max|grad|=0.078659 (grad 0.0s) | E=-73.41453270 Ha  ΔE=8.26e-02 | opt 8.1s | iter 8.2s
+  [ADAPT iter  11] max|grad|=0.031569 (grad 0.0s) | E=-73.41490961 Ha  ΔE=3.77e-04 | opt 5.2s | iter 5.3s
+  [ADAPT iter  12] max|grad|=0.008838 (grad 0.0s) | E=-73.41497446 Ha  ΔE=6.49e-05 | opt 4.0s | iter 4.2s
+  [ADAPT iter  13] max|grad|=0.004897 (grad 0.0s) | E=-73.41500681 Ha  ΔE=3.23e-05 | opt 4.9s | iter 5.1s
+  [ADAPT iter  14] max|grad|=0.000217 (grad 0.0s) | E=-73.41505085 Ha  ΔE=4.40e-05 | opt 5.8s | iter 6.0s
+  [ADAPT iter  15] max|grad|=0.000330 (grad 0.0s) | E=-73.41505290 Ha  ΔE=2.05e-06 | opt 6.8s | iter 7.0s
+  [ADAPT iter  16] max|grad|=0.000466 (grad 0.0s) | E=-73.41505384 Ha  ΔE=9.32e-07 | opt 7.9s | iter 8.2s
+  [ADAPT iter  17] max|grad|=0.000132 (grad 0.0s) | E=-73.41505470 Ha  ΔE=8.61e-07 | opt 9.2s | iter 9.5s
+  [ADAPT iter  18] max|grad|=0.000116 (grad 0.0s) | E=-73.41505518 Ha  ΔE=4.83e-07 | opt 9.7s | iter 10.1s
+  [ADAPT iter  19] max|grad|=0.000046 (grad 0.0s) | E=-73.41505646 Ha  ΔE=1.29e-06 | opt 11.5s | iter 11.8s
+  [ADAPT iter  20] max|grad|=0.000008 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 19 iter | 19 op | E=-73.41505646 Ha | total 92.3s (grad avg 0.0s, opt avg 4.7s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 524.63 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 524.6 mHa > 5 mHa] — Retry 1/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.093730 (grad 0.0s) | E=-72.68273855 Ha  ΔE=7.27e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.087493 (grad 0.0s) | E=-72.68401650 Ha  ΔE=1.28e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.068414 (grad 0.0s) | E=-72.69831682 Ha  ΔE=1.43e-02 | opt 0.6s | iter 0.7s
+  [ADAPT iter   4] max|grad|=0.046939 (grad 0.0s) | E=-72.69928089 Ha  ΔE=9.64e-04 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.044922 (grad 0.0s) | E=-72.69965878 Ha  ΔE=3.78e-04 | opt 1.5s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.040943 (grad 0.0s) | E=-72.70057910 Ha  ΔE=9.20e-04 | opt 2.0s | iter 2.1s
+  [ADAPT iter   7] max|grad|=0.032214 (grad 0.0s) | E=-72.70132917 Ha  ΔE=7.50e-04 | opt 1.2s | iter 1.3s
+  [ADAPT iter   8] max|grad|=0.030622 (grad 0.0s) | E=-73.31040335 Ha  ΔE=6.09e-01 | opt 7.6s | iter 7.7s
+  [ADAPT iter   9] max|grad|=0.286932 (grad 0.0s) | E=-73.33194144 Ha  ΔE=2.15e-02 | opt 3.1s | iter 3.2s
+  [ADAPT iter  10] max|grad|=0.078657 (grad 0.0s) | E=-73.41455257 Ha  ΔE=8.26e-02 | opt 13.9s | iter 14.1s
+  [ADAPT iter  11] max|grad|=0.031561 (grad 0.0s) | E=-73.41490163 Ha  ΔE=3.49e-04 | opt 5.3s | iter 5.4s
+  [ADAPT iter  12] max|grad|=0.008911 (grad 0.0s) | E=-73.41499245 Ha  ΔE=9.08e-05 | opt 7.8s | iter 8.0s
+  [ADAPT iter  13] max|grad|=0.004222 (grad 0.0s) | E=-73.41499943 Ha  ΔE=6.99e-06 | opt 4.7s | iter 4.9s
+  [ADAPT iter  14] max|grad|=0.002772 (grad 0.0s) | E=-73.41509177 Ha  ΔE=9.23e-05 | opt 10.3s | iter 10.5s
+  [ADAPT iter  15] max|grad|=0.003253 (grad 0.0s) | E=-73.41511386 Ha  ΔE=2.21e-05 | opt 18.4s | iter 18.6s
+  [ADAPT iter  16] max|grad|=0.001543 (grad 0.0s) | E=-73.41522712 Ha  ΔE=1.13e-04 | opt 12.2s | iter 12.4s
+  [ADAPT iter  17] max|grad|=0.001718 (grad 0.0s) | E=-73.41524821 Ha  ΔE=2.11e-05 | opt 17.3s | iter 17.6s
+  [ADAPT iter  18] max|grad|=0.003764 (grad 0.0s) | E=-73.41528633 Ha  ΔE=3.81e-05 | opt 19.8s | iter 20.1s
+  [ADAPT iter  19] max|grad|=0.000248 (grad 0.0s) | E=-73.41526894 Ha  ΔE=1.74e-05 | opt 26.5s | iter 26.9s
+  [ADAPT iter  20] max|grad|=0.000493 (grad 0.0s) | E=-73.41525862 Ha  ΔE=1.03e-05 | opt 13.3s | iter 13.6s
+  [ADAPT iter  21] max|grad|=0.000110 (grad 0.0s) | E=-73.41526746 Ha  ΔE=8.84e-06 | opt 15.7s | iter 16.1s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-73.41526746 Ha | total 186.5s (grad avg 0.0s, opt avg 8.7s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 524.41 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 524.4 mHa > 5 mHa] — Retry 2/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.093730 (grad 0.0s) | E=-72.68273855 Ha  ΔE=7.27e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.087493 (grad 0.0s) | E=-72.68401650 Ha  ΔE=1.28e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.068413 (grad 0.0s) | E=-72.69831682 Ha  ΔE=1.43e-02 | opt 0.6s | iter 0.7s
+  [ADAPT iter   4] max|grad|=0.046946 (grad 0.0s) | E=-72.69927941 Ha  ΔE=9.63e-04 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.044804 (grad 0.0s) | E=-72.69990775 Ha  ΔE=6.28e-04 | opt 1.4s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.041906 (grad 0.0s) | E=-72.70068386 Ha  ΔE=7.76e-04 | opt 1.7s | iter 1.8s
+  [ADAPT iter   7] max|grad|=0.032275 (grad 0.0s) | E=-72.70141623 Ha  ΔE=7.32e-04 | opt 2.4s | iter 2.5s
+  [ADAPT iter   8] max|grad|=0.028911 (grad 0.0s) | E=-73.31038754 Ha  ΔE=6.09e-01 | opt 8.7s | iter 8.8s
+  [ADAPT iter   9] max|grad|=0.286562 (grad 0.0s) | E=-73.33196749 Ha  ΔE=2.16e-02 | opt 3.8s | iter 3.9s
+  [ADAPT iter  10] max|grad|=0.079042 (grad 0.0s) | E=-73.41456097 Ha  ΔE=8.26e-02 | opt 9.7s | iter 9.8s
+  [ADAPT iter  11] max|grad|=0.031573 (grad 0.0s) | E=-73.41486535 Ha  ΔE=3.04e-04 | opt 4.1s | iter 4.3s
+  [ADAPT iter  12] max|grad|=0.008757 (grad 0.0s) | E=-73.41492887 Ha  ΔE=6.35e-05 | opt 7.7s | iter 7.9s
+  [ADAPT iter  13] max|grad|=0.006091 (grad 0.0s) | E=-73.93819650 Ha  ΔE=5.23e-01 | opt 29.9s | iter 30.1s
+  [ADAPT iter  14] max|grad|=0.028019 (grad 0.0s) | E=-73.93856739 Ha  ΔE=3.71e-04 | opt 12.2s | iter 12.4s
+  [ADAPT iter  15] max|grad|=0.027729 (grad 0.0s) | E=-73.93892864 Ha  ΔE=3.61e-04 | opt 12.6s | iter 12.8s
+  [ADAPT iter  16] max|grad|=0.000779 (grad 0.0s) | E=-73.93892303 Ha  ΔE=5.62e-06 | opt 9.7s | iter 10.0s
+  [ADAPT iter  17] max|grad|=0.003896 (grad 0.0s) | E=-73.93880854 Ha  ΔE=1.14e-04 | opt 14.3s | iter 14.6s
+  [ADAPT iter  18] max|grad|=0.001350 (grad 0.0s) | E=-73.93865701 Ha  ΔE=1.52e-04 | opt 23.3s | iter 23.6s
+  [ADAPT iter  19] max|grad|=0.001674 (grad 0.0s) | E=-73.93866635 Ha  ΔE=9.34e-06 | opt 24.1s | iter 24.4s
+  [ADAPT iter  20] max|grad|=0.000592 (grad 0.0s) | E=-73.93876354 Ha  ΔE=9.72e-05 | opt 48.8s | iter 49.2s
+  [ADAPT iter  21] max|grad|=0.000212 (grad 0.0s) | E=-73.93876058 Ha  ΔE=2.96e-06 | opt 30.3s | iter 30.7s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-73.93876058 Ha | total 250.7s (grad avg 0.0s, opt avg 11.7s)
+  [Timing] Optimasi    : 529.85 s
+
+  E_HF              = -72.68127606 Ha
+  E_CASCI           = -73.93968152 Ha
+  E_VQE             = -73.93876058 Ha
+  E_FCI (dlm AS)    = -73.93968152 Ha  ← batas VQE
+  Error vs FCI(AS)  = 9.21e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -73.96732029 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.86e-02 Ha  [✗]
+  Gap AS vs full    = 27.64 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.5s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 8.8m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 11.7s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 8.8m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 2/15
+
+============================================================
+  VQE: H2O  r = 0.600 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.04098587 Ha
+  E_total (CASCI) = -74.45374643 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.21141921 Ha
+  E_FCI (dalam AS) = -74.45374643 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.48262037 Ha  ← referensi literatur
+  Gap AS vs penuh  = 28.87 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.091326 (grad 0.1s) | E=-73.21301224 Ha  ΔE=7.32e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.084427 (grad 0.0s) | E=-73.21437864 Ha  ΔE=1.37e-03 | opt 0.2s | iter 0.2s
+  [ADAPT iter   3] max|grad|=0.068259 (grad 0.0s) | E=-73.21733412 Ha  ΔE=2.96e-03 | opt 0.4s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.064859 (grad 0.0s) | E=-73.22997663 Ha  ΔE=1.26e-02 | opt 0.7s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.054014 (grad 0.0s) | E=-73.23183877 Ha  ΔE=1.86e-03 | opt 1.0s | iter 1.1s
+  [ADAPT iter   6] max|grad|=0.048709 (grad 0.0s) | E=-73.23269004 Ha  ΔE=8.51e-04 | opt 1.1s | iter 1.2s
+  [ADAPT iter   7] max|grad|=0.035960 (grad 0.0s) | E=-73.23387467 Ha  ΔE=1.18e-03 | opt 2.5s | iter 2.6s
+  [ADAPT iter   8] max|grad|=0.023912 (grad 0.0s) | E=-73.80226995 Ha  ΔE=5.68e-01 | opt 8.2s | iter 8.3s
+  [ADAPT iter   9] max|grad|=0.272774 (grad 0.0s) | E=-73.82257822 Ha  ΔE=2.03e-02 | opt 3.1s | iter 3.2s
+  [ADAPT iter  10] max|grad|=0.094787 (grad 0.0s) | E=-73.92203577 Ha  ΔE=9.95e-02 | opt 7.4s | iter 7.6s
+  [ADAPT iter  11] max|grad|=0.030069 (grad 0.0s) | E=-73.92254328 Ha  ΔE=5.08e-04 | opt 5.4s | iter 5.6s
+  [ADAPT iter  12] max|grad|=0.007638 (grad 0.0s) | E=-73.92257385 Ha  ΔE=3.06e-05 | opt 3.9s | iter 4.1s
+  [ADAPT iter  13] max|grad|=0.005286 (grad 0.0s) | E=-73.92260370 Ha  ΔE=2.98e-05 | opt 4.7s | iter 4.9s
+  [ADAPT iter  14] max|grad|=0.001455 (grad 0.0s) | E=-73.92262273 Ha  ΔE=1.90e-05 | opt 5.7s | iter 5.9s
+  [ADAPT iter  15] max|grad|=0.000339 (grad 0.0s) | E=-73.92263603 Ha  ΔE=1.33e-05 | opt 6.2s | iter 6.4s
+  [ADAPT iter  16] max|grad|=0.000110 (grad 0.0s) | E=-73.92264574 Ha  ΔE=9.72e-06 | opt 7.3s | iter 7.6s
+  [ADAPT iter  17] max|grad|=0.000105 (grad 0.0s) | E=-73.92265294 Ha  ΔE=7.20e-06 | opt 8.5s | iter 8.8s
+  [ADAPT iter  18] max|grad|=0.000112 (grad 0.0s) | E=-73.92265815 Ha  ΔE=5.21e-06 | opt 10.0s | iter 10.3s
+  [ADAPT iter  19] max|grad|=0.000081 (grad 0.0s) | E=-73.92266240 Ha  ΔE=4.25e-06 | opt 11.5s | iter 11.8s
+  [ADAPT iter  20] max|grad|=0.000028 (grad 0.0s) | E=-73.92266538 Ha  ΔE=2.97e-06 | opt 13.3s | iter 13.7s
+  [ADAPT iter  21] max|grad|=0.000002 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 20 iter | 20 op | E=-73.92266538 Ha | total 105.1s (grad avg 0.0s, opt avg 5.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 531.08 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 531.1 mHa > 5 mHa] — Retry 1/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.091326 (grad 0.0s) | E=-73.21301224 Ha  ΔE=7.32e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.084429 (grad 0.0s) | E=-73.21437864 Ha  ΔE=1.37e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.068252 (grad 0.0s) | E=-73.21733431 Ha  ΔE=2.96e-03 | opt 0.5s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.064864 (grad 0.0s) | E=-73.22997896 Ha  ΔE=1.26e-02 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.054240 (grad 0.0s) | E=-73.23180489 Ha  ΔE=1.83e-03 | opt 1.2s | iter 1.2s
+  [ADAPT iter   6] max|grad|=0.048723 (grad 0.0s) | E=-73.23262850 Ha  ΔE=8.24e-04 | opt 1.7s | iter 1.8s
+  [ADAPT iter   7] max|grad|=0.035999 (grad 0.0s) | E=-73.23385946 Ha  ΔE=1.23e-03 | opt 2.0s | iter 2.1s
+  [ADAPT iter   8] max|grad|=0.024669 (grad 0.0s) | E=-73.80226778 Ha  ΔE=5.68e-01 | opt 7.7s | iter 7.8s
+  [ADAPT iter   9] max|grad|=0.272691 (grad 0.0s) | E=-73.82257607 Ha  ΔE=2.03e-02 | opt 3.1s | iter 3.3s
+  [ADAPT iter  10] max|grad|=0.094765 (grad 0.0s) | E=-73.92215880 Ha  ΔE=9.96e-02 | opt 12.4s | iter 12.5s
+  [ADAPT iter  11] max|grad|=0.030112 (grad 0.0s) | E=-73.92253270 Ha  ΔE=3.74e-04 | opt 5.2s | iter 5.4s
+  [ADAPT iter  12] max|grad|=0.007707 (grad 0.0s) | E=-73.92262781 Ha  ΔE=9.51e-05 | opt 7.9s | iter 8.0s
+  [ADAPT iter  13] max|grad|=0.003925 (grad 0.0s) | E=-73.92265440 Ha  ΔE=2.66e-05 | opt 4.7s | iter 4.9s
+  [ADAPT iter  14] max|grad|=0.001403 (grad 0.0s) | E=-73.92261679 Ha  ΔE=3.76e-05 | opt 9.5s | iter 9.7s
+  [ADAPT iter  15] max|grad|=0.001062 (grad 0.0s) | E=-73.92260337 Ha  ΔE=1.34e-05 | opt 11.1s | iter 11.3s
+  [ADAPT iter  16] max|grad|=0.002414 (grad 0.0s) | E=-73.92270446 Ha  ΔE=1.01e-04 | opt 14.4s | iter 14.7s
+  [ADAPT iter  17] max|grad|=0.001992 (grad 0.0s) | E=-73.92265467 Ha  ΔE=4.98e-05 | opt 19.7s | iter 20.0s
+  [ADAPT iter  18] max|grad|=0.001036 (grad 0.0s) | E=-73.92238031 Ha  ΔE=2.74e-04 | opt 16.5s | iter 16.8s
+  [ADAPT iter  19] max|grad|=0.001400 (grad 0.0s) | E=-73.92256119 Ha  ΔE=1.81e-04 | opt 26.7s | iter 27.1s
+  [ADAPT iter  20] max|grad|=0.001705 (grad 0.0s) | E=-73.92263687 Ha  ΔE=7.57e-05 | opt 17.5s | iter 17.9s
+  [ADAPT iter  21] max|grad|=0.000069 (grad 0.0s) | E=-73.92264551 Ha  ΔE=8.64e-06 | opt 15.1s | iter 15.5s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-73.92264551 Ha | total 182.3s (grad avg 0.0s, opt avg 8.5s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 531.10 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 531.1 mHa > 5 mHa] — Retry 2/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.091326 (grad 0.0s) | E=-73.21301224 Ha  ΔE=7.32e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.084429 (grad 0.0s) | E=-73.21437864 Ha  ΔE=1.37e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.068249 (grad 0.0s) | E=-73.21733429 Ha  ΔE=2.96e-03 | opt 0.4s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.064864 (grad 0.0s) | E=-73.22989982 Ha  ΔE=1.26e-02 | opt 1.0s | iter 1.0s
+  [ADAPT iter   5] max|grad|=0.055284 (grad 0.0s) | E=-73.23184839 Ha  ΔE=1.95e-03 | opt 1.2s | iter 1.3s
+  [ADAPT iter   6] max|grad|=0.048651 (grad 0.0s) | E=-73.23268662 Ha  ΔE=8.38e-04 | opt 1.7s | iter 1.8s
+  [ADAPT iter   7] max|grad|=0.036483 (grad 0.0s) | E=-73.23387648 Ha  ΔE=1.19e-03 | opt 2.4s | iter 2.5s
+  [ADAPT iter   8] max|grad|=0.023930 (grad 0.0s) | E=-73.80226491 Ha  ΔE=5.68e-01 | opt 9.2s | iter 9.4s
+  [ADAPT iter   9] max|grad|=0.273071 (grad 0.0s) | E=-73.82261283 Ha  ΔE=2.03e-02 | opt 3.1s | iter 3.3s
+  [ADAPT iter  10] max|grad|=0.095279 (grad 0.0s) | E=-73.92218574 Ha  ΔE=9.96e-02 | opt 8.9s | iter 9.1s
+  [ADAPT iter  11] max|grad|=0.030112 (grad 0.0s) | E=-73.92253680 Ha  ΔE=3.51e-04 | opt 5.2s | iter 5.3s
+  [ADAPT iter  12] max|grad|=0.007732 (grad 0.0s) | E=-73.92252984 Ha  ΔE=6.96e-06 | opt 9.0s | iter 9.1s
+  [ADAPT iter  13] max|grad|=0.005550 (grad 0.0s) | E=-74.45218100 Ha  ΔE=5.30e-01 | opt 29.9s | iter 30.1s
+  [ADAPT iter  14] max|grad|=0.027033 (grad 0.0s) | E=-74.45257236 Ha  ΔE=3.91e-04 | opt 10.6s | iter 10.8s
+  [ADAPT iter  15] max|grad|=0.026728 (grad 0.0s) | E=-74.45288953 Ha  ΔE=3.17e-04 | opt 10.5s | iter 10.7s
+  [ADAPT iter  16] max|grad|=0.007650 (grad 0.0s) | E=-74.45292711 Ha  ΔE=3.76e-05 | opt 12.2s | iter 12.5s
+  [ADAPT iter  17] max|grad|=0.000763 (grad 0.0s) | E=-74.45272945 Ha  ΔE=1.98e-04 | opt 14.6s | iter 14.9s
+  [ADAPT iter  18] max|grad|=0.001483 (grad 0.0s) | E=-74.45290137 Ha  ΔE=1.72e-04 | opt 40.1s | iter 40.5s
+  [ADAPT iter  19] max|grad|=0.000684 (grad 0.0s) | E=-74.45286021 Ha  ΔE=4.12e-05 | opt 19.1s | iter 19.5s
+  [ADAPT iter  20] max|grad|=0.000340 (grad 0.0s) | E=-74.45285743 Ha  ΔE=2.77e-06 | opt 22.3s | iter 22.7s
+  [ADAPT iter  21] max|grad|=0.000064 (grad 0.0s) | E=-74.45286565 Ha  ΔE=8.22e-06 | opt 30.3s | iter 30.7s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.45286565 Ha | total 236.3s (grad avg 0.0s, opt avg 11.1s)
+  [Timing] Optimasi    : 524.14 s
+
+  E_HF              = -73.21141921 Ha
+  E_CASCI           = -74.45374643 Ha
+  E_VQE             = -74.45286565 Ha
+  E_FCI (dlm AS)    = -74.45374643 Ha  ← batas VQE
+  Error vs FCI(AS)  = 8.81e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.48262037 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.98e-02 Ha  [✗]
+  Gap AS vs full    = 28.87 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 8.7m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 11.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 8.7m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 3/15
+
+============================================================
+  VQE: H2O  r = 0.700 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.43935283 Ha
+  E_total (CASCI) = -74.71394851 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.47989214 Ha
+  E_FCI (dalam AS) = -74.71394851 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.74403775 Ha  ← referensi literatur
+  Gap AS vs penuh  = 30.09 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.107174 (grad 0.1s) | E=-73.48244709 Ha  ΔE=7.35e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.097885 (grad 0.0s) | E=-73.48458812 Ha  ΔE=2.14e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.091604 (grad 0.0s) | E=-73.49378833 Ha  ΔE=9.20e-03 | opt 0.4s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.060536 (grad 0.0s) | E=-73.50444706 Ha  ΔE=1.07e-02 | opt 0.8s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.056052 (grad 0.0s) | E=-73.50823835 Ha  ΔE=3.79e-03 | opt 1.2s | iter 1.3s
+  [ADAPT iter   6] max|grad|=0.053450 (grad 0.0s) | E=-73.50943082 Ha  ΔE=1.19e-03 | opt 1.1s | iter 1.2s
+  [ADAPT iter   7] max|grad|=0.045941 (grad 0.0s) | E=-73.51241011 Ha  ΔE=2.98e-03 | opt 2.8s | iter 2.9s
+  [ADAPT iter   8] max|grad|=0.037095 (grad 0.0s) | E=-73.51337081 Ha  ΔE=9.61e-04 | opt 2.9s | iter 3.0s
+  [ADAPT iter   9] max|grad|=0.034757 (grad 0.0s) | E=-73.51425308 Ha  ΔE=8.82e-04 | opt 3.0s | iter 3.2s
+  [ADAPT iter  10] max|grad|=0.016389 (grad 0.0s) | E=-74.04380883 Ha  ΔE=5.30e-01 | opt 30.6s | iter 30.8s
+  [ADAPT iter  11] max|grad|=0.245740 (grad 0.0s) | E=-74.06099051 Ha  ΔE=1.72e-02 | opt 5.3s | iter 5.5s
+  [ADAPT iter  12] max|grad|=0.110573 (grad 0.0s) | E=-74.17688380 Ha  ΔE=1.16e-01 | opt 11.8s | iter 11.9s
+  [ADAPT iter  13] max|grad|=0.006903 (grad 0.0s) | E=-74.17698150 Ha  ΔE=9.77e-05 | opt 6.8s | iter 7.0s
+  [ADAPT iter  14] max|grad|=0.004944 (grad 0.0s) | E=-74.17703236 Ha  ΔE=5.09e-05 | opt 5.8s | iter 6.0s
+  [ADAPT iter  15] max|grad|=0.003457 (grad 0.0s) | E=-74.17705182 Ha  ΔE=1.95e-05 | opt 6.8s | iter 7.1s
+  [ADAPT iter  16] max|grad|=0.000630 (grad 0.0s) | E=-74.17706353 Ha  ΔE=1.17e-05 | opt 8.1s | iter 8.4s
+  [ADAPT iter  17] max|grad|=0.000352 (grad 0.0s) | E=-74.17706873 Ha  ΔE=5.20e-06 | opt 9.5s | iter 9.9s
+  [ADAPT iter  18] max|grad|=0.000179 (grad 0.0s) | E=-74.17707487 Ha  ΔE=6.14e-06 | opt 10.1s | iter 10.4s
+  [ADAPT iter  19] max|grad|=0.000111 (grad 0.0s) | E=-74.17707665 Ha  ΔE=1.78e-06 | opt 11.5s | iter 11.8s
+  [ADAPT iter  20] max|grad|=0.000077 (grad 0.0s) | E=-74.17707726 Ha  ΔE=6.09e-07 | opt 13.2s | iter 13.6s
+  [ADAPT iter  21] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 20 iter | 20 op | E=-74.17707726 Ha | total 136.0s (grad avg 0.0s, opt avg 6.6s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 536.87 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 536.9 mHa > 5 mHa] — Retry 1/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.107174 (grad 0.0s) | E=-73.48244709 Ha  ΔE=7.35e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.097888 (grad 0.0s) | E=-73.48458812 Ha  ΔE=2.14e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.091615 (grad 0.0s) | E=-73.49375978 Ha  ΔE=9.17e-03 | opt 0.3s | iter 0.3s
+  [ADAPT iter   4] max|grad|=0.060553 (grad 0.0s) | E=-73.50464189 Ha  ΔE=1.09e-02 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.057286 (grad 0.0s) | E=-73.50824095 Ha  ΔE=3.60e-03 | opt 1.8s | iter 1.9s
+  [ADAPT iter   6] max|grad|=0.053519 (grad 0.0s) | E=-73.50939527 Ha  ΔE=1.15e-03 | opt 1.8s | iter 1.9s
+  [ADAPT iter   7] max|grad|=0.046380 (grad 0.0s) | E=-73.51238240 Ha  ΔE=2.99e-03 | opt 2.0s | iter 2.1s
+  [ADAPT iter   8] max|grad|=0.036726 (grad 0.0s) | E=-73.51345416 Ha  ΔE=1.07e-03 | opt 3.4s | iter 3.5s
+  [ADAPT iter   9] max|grad|=0.035056 (grad 0.0s) | E=-73.51434512 Ha  ΔE=8.91e-04 | opt 3.0s | iter 3.2s
+  [ADAPT iter  10] max|grad|=0.016595 (grad 0.0s) | E=-74.04380108 Ha  ΔE=5.29e-01 | opt 15.2s | iter 15.3s
+  [ADAPT iter  11] max|grad|=0.245514 (grad 0.0s) | E=-74.06101539 Ha  ΔE=1.72e-02 | opt 5.4s | iter 5.6s
+  [ADAPT iter  12] max|grad|=0.111308 (grad 0.0s) | E=-74.17692383 Ha  ΔE=1.16e-01 | opt 15.9s | iter 16.1s
+  [ADAPT iter  13] max|grad|=0.006630 (grad 0.0s) | E=-74.17702754 Ha  ΔE=1.04e-04 | opt 5.1s | iter 5.3s
+  [ADAPT iter  14] max|grad|=0.004361 (grad 0.0s) | E=-74.17701896 Ha  ΔE=8.59e-06 | opt 17.4s | iter 17.6s
+  [ADAPT iter  15] max|grad|=0.003675 (grad 0.0s) | E=-74.17705995 Ha  ΔE=4.10e-05 | opt 10.4s | iter 10.7s
+  [ADAPT iter  16] max|grad|=0.001310 (grad 0.0s) | E=-74.17717328 Ha  ΔE=1.13e-04 | opt 12.3s | iter 12.5s
+  [ADAPT iter  17] max|grad|=0.000835 (grad 0.0s) | E=-74.17719322 Ha  ΔE=1.99e-05 | opt 17.8s | iter 18.1s
+  [ADAPT iter  18] max|grad|=0.001311 (grad 0.0s) | E=-74.17700750 Ha  ΔE=1.86e-04 | opt 19.8s | iter 20.1s
+  [ADAPT iter  19] max|grad|=0.000733 (grad 0.0s) | E=-74.17701290 Ha  ΔE=5.40e-06 | opt 34.2s | iter 34.6s
+  [ADAPT iter  20] max|grad|=0.000799 (grad 0.0s) | E=-74.17700763 Ha  ΔE=5.27e-06 | opt 17.8s | iter 18.1s
+  [ADAPT iter  21] max|grad|=0.000010 (grad 0.0s) | E=-74.17701466 Ha  ΔE=7.03e-06 | opt 15.1s | iter 15.5s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.17701466 Ha | total 204.1s (grad avg 0.0s, opt avg 9.5s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 536.93 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 536.9 mHa > 5 mHa] — Retry 2/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.107174 (grad 0.0s) | E=-73.48244709 Ha  ΔE=7.35e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.097888 (grad 0.0s) | E=-73.48458811 Ha  ΔE=2.14e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.091611 (grad 0.0s) | E=-73.49378990 Ha  ΔE=9.20e-03 | opt 0.5s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.060552 (grad 0.0s) | E=-73.50442408 Ha  ΔE=1.06e-02 | opt 0.9s | iter 1.0s
+  [ADAPT iter   5] max|grad|=0.058167 (grad 0.0s) | E=-73.50824082 Ha  ΔE=3.82e-03 | opt 1.6s | iter 1.6s
+  [ADAPT iter   6] max|grad|=0.053662 (grad 0.0s) | E=-73.50942105 Ha  ΔE=1.18e-03 | opt 1.7s | iter 1.8s
+  [ADAPT iter   7] max|grad|=0.047286 (grad 0.0s) | E=-73.51237936 Ha  ΔE=2.96e-03 | opt 2.4s | iter 2.5s
+  [ADAPT iter   8] max|grad|=0.038538 (grad 0.0s) | E=-73.51334500 Ha  ΔE=9.66e-04 | opt 3.5s | iter 3.6s
+  [ADAPT iter   9] max|grad|=0.034351 (grad 0.0s) | E=-73.51429597 Ha  ΔE=9.51e-04 | opt 4.6s | iter 4.7s
+  [ADAPT iter  10] max|grad|=0.017071 (grad 0.0s) | E=-74.04381774 Ha  ΔE=5.30e-01 | opt 12.4s | iter 12.6s
+  [ADAPT iter  11] max|grad|=0.245397 (grad 0.0s) | E=-74.06103552 Ha  ΔE=1.72e-02 | opt 7.4s | iter 7.6s
+  [ADAPT iter  12] max|grad|=0.111209 (grad 0.0s) | E=-74.17692554 Ha  ΔE=1.16e-01 | opt 21.1s | iter 21.2s
+  [ADAPT iter  13] max|grad|=0.007042 (grad 0.0s) | E=-74.17701487 Ha  ΔE=8.93e-05 | opt 19.3s | iter 19.5s
+  [ADAPT iter  14] max|grad|=0.004642 (grad 0.0s) | E=-74.17706475 Ha  ΔE=4.99e-05 | opt 11.0s | iter 11.3s
+  [ADAPT iter  15] max|grad|=0.006100 (grad 0.0s) | E=-74.71291387 Ha  ΔE=5.36e-01 | opt 76.9s | iter 77.1s
+  [ADAPT iter  16] max|grad|=0.030603 (grad 0.0s) | E=-74.71343716 Ha  ΔE=5.23e-04 | opt 14.7s | iter 15.0s
+  [ADAPT iter  17] max|grad|=0.029799 (grad 0.0s) | E=-74.71393346 Ha  ΔE=4.96e-04 | opt 20.4s | iter 20.7s
+  [ADAPT iter  18] max|grad|=0.000598 (grad 0.0s) | E=-74.71389901 Ha  ΔE=3.45e-05 | opt 16.9s | iter 17.2s
+  [ADAPT iter  19] max|grad|=0.001653 (grad 0.0s) | E=-74.71388179 Ha  ΔE=1.72e-05 | opt 23.2s | iter 23.5s
+  [ADAPT iter  20] max|grad|=0.001118 (grad 0.0s) | E=-74.71298109 Ha  ΔE=9.01e-04 | opt 22.1s | iter 22.4s
+  [ADAPT iter  21] max|grad|=0.000093 (grad 0.0s) | E=-74.71307621 Ha  ΔE=9.51e-05 | opt 30.2s | iter 30.6s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.71307621 Ha | total 295.4s (grad avg 0.0s, opt avg 13.9s)
+  [Timing] Optimasi    : 635.99 s
+
+  E_HF              = -73.47989214 Ha
+  E_CASCI           = -74.71394851 Ha
+  E_VQE             = -74.71307621 Ha
+  E_FCI (dlm AS)    = -74.71394851 Ha  ← batas VQE
+  Error vs FCI(AS)  = 8.72e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.74403775 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.10e-02 Ha  [✗]
+  Gap AS vs full    = 30.09 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 10.6m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 13.9s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 10.6m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 4/15
+
+============================================================
+  VQE: H2O  r = 0.740 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.54897929 Ha
+  E_total (CASCI) = -74.77727089 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.37 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.54663396 Ha
+  E_FCI (dalam AS) = -74.77727089 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.80794307 Ha  ← referensi literatur
+  Gap AS vs penuh  = 30.67 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.120835 (grad 0.1s) | E=-73.55008751 Ha  ΔE=7.36e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.109714 (grad 0.0s) | E=-73.55294910 Ha  ΔE=2.86e-03 | opt 0.3s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.102887 (grad 0.0s) | E=-73.56818254 Ha  ΔE=1.52e-02 | opt 0.4s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.058570 (grad 0.0s) | E=-73.57787915 Ha  ΔE=9.70e-03 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.048971 (grad 0.0s) | E=-73.57891748 Ha  ΔE=1.04e-03 | opt 1.0s | iter 1.1s
+  [ADAPT iter   6] max|grad|=0.049129 (grad 0.0s) | E=-73.58302290 Ha  ΔE=4.11e-03 | opt 2.5s | iter 2.6s
+  [ADAPT iter   7] max|grad|=0.052736 (grad 0.0s) | E=-73.58773969 Ha  ΔE=4.72e-03 | opt 2.4s | iter 2.5s
+  [ADAPT iter   8] max|grad|=0.046698 (grad 0.0s) | E=-73.58953107 Ha  ΔE=1.79e-03 | opt 3.4s | iter 3.5s
+  [ADAPT iter   9] max|grad|=0.043517 (grad 0.0s) | E=-73.59134346 Ha  ΔE=1.81e-03 | opt 4.5s | iter 4.7s
+  [ADAPT iter  10] max|grad|=0.013270 (grad 0.0s) | E=-74.10188507 Ha  ΔE=5.11e-01 | opt 31.0s | iter 31.1s
+  [ADAPT iter  11] max|grad|=0.229618 (grad 0.0s) | E=-74.11717893 Ha  ΔE=1.53e-02 | opt 5.3s | iter 5.5s
+  [ADAPT iter  12] max|grad|=0.116243 (grad 0.0s) | E=-74.23883142 Ha  ΔE=1.22e-01 | opt 13.1s | iter 13.3s
+  [ADAPT iter  13] max|grad|=0.006866 (grad 0.0s) | E=-74.23887599 Ha  ΔE=4.46e-05 | opt 4.8s | iter 5.0s
+  [ADAPT iter  14] max|grad|=0.004831 (grad 0.0s) | E=-74.23891213 Ha  ΔE=3.61e-05 | opt 6.0s | iter 6.3s
+  [ADAPT iter  15] max|grad|=0.001557 (grad 0.0s) | E=-74.23893295 Ha  ΔE=2.08e-05 | opt 6.8s | iter 7.1s
+  [ADAPT iter  16] max|grad|=0.000218 (grad 0.0s) | E=-74.23894711 Ha  ΔE=1.42e-05 | opt 7.5s | iter 7.8s
+  [ADAPT iter  17] max|grad|=0.000221 (grad 0.0s) | E=-74.23895821 Ha  ΔE=1.11e-05 | opt 8.7s | iter 9.0s
+  [ADAPT iter  18] max|grad|=0.000096 (grad 0.0s) | E=-74.23896558 Ha  ΔE=7.37e-06 | opt 10.0s | iter 10.3s
+  [ADAPT iter  19] max|grad|=0.000093 (grad 0.0s) | E=-74.23897371 Ha  ΔE=8.13e-06 | opt 12.0s | iter 12.3s
+  [ADAPT iter  20] max|grad|=0.000026 (grad 0.0s) | E=-74.23897861 Ha  ΔE=4.90e-06 | opt 13.4s | iter 13.7s
+  [ADAPT iter  21] max|grad|=0.000001 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 20 iter | 20 op | E=-74.23897861 Ha | total 137.9s (grad avg 0.0s, opt avg 6.7s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 538.29 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 538.3 mHa > 5 mHa] — Retry 1/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.120835 (grad 0.0s) | E=-73.55008751 Ha  ΔE=7.36e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.109715 (grad 0.0s) | E=-73.55294910 Ha  ΔE=2.86e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.102900 (grad 0.0s) | E=-73.56815343 Ha  ΔE=1.52e-02 | opt 0.4s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.058530 (grad 0.0s) | E=-73.57807281 Ha  ΔE=9.92e-03 | opt 0.6s | iter 0.6s
+  [ADAPT iter   5] max|grad|=0.052443 (grad 0.0s) | E=-73.57949616 Ha  ΔE=1.42e-03 | opt 2.2s | iter 2.3s
+  [ADAPT iter   6] max|grad|=0.047144 (grad 0.0s) | E=-73.58311175 Ha  ΔE=3.62e-03 | opt 3.1s | iter 3.2s
+  [ADAPT iter   7] max|grad|=0.052660 (grad 0.0s) | E=-73.58782530 Ha  ΔE=4.71e-03 | opt 2.4s | iter 2.5s
+  [ADAPT iter   8] max|grad|=0.046814 (grad 0.0s) | E=-73.58962542 Ha  ΔE=1.80e-03 | opt 2.8s | iter 2.9s
+  [ADAPT iter   9] max|grad|=0.045743 (grad 0.0s) | E=-73.59149004 Ha  ΔE=1.86e-03 | opt 4.8s | iter 4.9s
+  [ADAPT iter  10] max|grad|=0.013496 (grad 0.0s) | E=-74.77560126 Ha  ΔE=1.18e+00 | opt 11.4s | iter 11.6s
+  [ADAPT iter  11] max|grad|=0.032670 (grad 0.0s) | E=-74.77622377 Ha  ΔE=6.23e-04 | opt 7.2s | iter 7.4s
+  [ADAPT iter  12] max|grad|=0.031406 (grad 0.0s) | E=-74.77680057 Ha  ΔE=5.77e-04 | opt 7.5s | iter 7.7s
+  [ADAPT iter  13] max|grad|=0.025969 (grad 0.0s) | E=-74.77704318 Ha  ΔE=2.43e-04 | opt 6.6s | iter 6.8s
+  [ADAPT iter  14] max|grad|=0.016034 (grad 0.0s) | E=-74.77715180 Ha  ΔE=1.09e-04 | opt 14.3s | iter 14.5s
+  [ADAPT iter  15] max|grad|=0.011047 (grad 0.0s) | E=-74.77723537 Ha  ΔE=8.36e-05 | opt 12.7s | iter 13.0s
+  [ADAPT iter  16] max|grad|=0.001541 (grad 0.0s) | E=-74.77661327 Ha  ΔE=6.22e-04 | opt 12.5s | iter 12.8s
+  [ADAPT iter  17] max|grad|=0.005751 (grad 0.0s) | E=-74.77697348 Ha  ΔE=3.60e-04 | opt 15.2s | iter 15.4s
+  [ADAPT iter  18] max|grad|=0.000943 (grad 0.0s) | E=-74.77668138 Ha  ΔE=2.92e-04 | opt 16.8s | iter 17.2s
+  [ADAPT iter  19] max|grad|=0.000577 (grad 0.0s) | E=-74.77655970 Ha  ΔE=1.22e-04 | opt 15.6s | iter 15.9s
+  [ADAPT iter  20] max|grad|=0.007799 (grad 0.0s) | E=-74.77663469 Ha  ΔE=7.50e-05 | opt 18.1s | iter 18.4s
+  [ADAPT iter  21] max|grad|=0.000353 (grad 0.0s) | E=-74.77663605 Ha  ΔE=1.37e-06 | opt 15.0s | iter 15.4s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.77663605 Ha | total 173.7s (grad avg 0.0s, opt avg 8.1s)
+  [Timing] Optimasi    : 311.92 s
+
+  E_HF              = -73.54663396 Ha
+  E_CASCI           = -74.77727089 Ha
+  E_VQE             = -74.77663605 Ha
+  E_FCI (dlm AS)    = -74.77727089 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.35e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.80794307 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.13e-02 Ha  [✗]
+  Gap AS vs full    = 30.67 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 5.2m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 8.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 5.2m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 5/15
+
+============================================================
+  VQE: H2O  r = 0.800 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.67691784 Ha
+  E_total (CASCI) = -74.84424051 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.37 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.62230609 Ha
+  E_FCI (dalam AS) = -74.84424051 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.87586615 Ha  ← referensi literatur
+  Gap AS vs penuh  = 31.63 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.155416 (grad 0.1s) | E=-73.62854720 Ha  ΔE=7.36e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.139362 (grad 0.0s) | E=-73.63360061 Ha  ΔE=5.05e-03 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.122089 (grad 0.0s) | E=-73.66557787 Ha  ΔE=3.20e-02 | opt 0.5s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.056419 (grad 0.0s) | E=-73.66740594 Ha  ΔE=1.83e-03 | opt 0.6s | iter 0.7s
+  [ADAPT iter   5] max|grad|=0.054553 (grad 0.0s) | E=-73.67595066 Ha  ΔE=8.54e-03 | opt 1.4s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.047464 (grad 0.0s) | E=-73.68088895 Ha  ΔE=4.94e-03 | opt 1.8s | iter 1.9s
+  [ADAPT iter   7] max|grad|=0.045204 (grad 0.0s) | E=-73.68355406 Ha  ΔE=2.67e-03 | opt 2.9s | iter 3.0s
+  [ADAPT iter   8] max|grad|=0.046323 (grad 0.0s) | E=-73.68866903 Ha  ΔE=5.11e-03 | opt 5.7s | iter 5.8s
+  [ADAPT iter   9] max|grad|=0.059301 (grad 0.0s) | E=-73.69283560 Ha  ΔE=4.17e-03 | opt 4.6s | iter 4.7s
+  [ADAPT iter  10] max|grad|=0.016943 (grad 0.0s) | E=-74.84182219 Ha  ΔE=1.15e+00 | opt 18.0s | iter 18.2s
+  [ADAPT iter  11] max|grad|=0.040661 (grad 0.0s) | E=-74.84283087 Ha  ΔE=1.01e-03 | opt 6.0s | iter 6.2s
+  [ADAPT iter  12] max|grad|=0.038578 (grad 0.0s) | E=-74.84377980 Ha  ΔE=9.49e-04 | opt 7.4s | iter 7.6s
+  [ADAPT iter  13] max|grad|=0.025204 (grad 0.0s) | E=-74.84400766 Ha  ΔE=2.28e-04 | opt 6.5s | iter 6.8s
+  [ADAPT iter  14] max|grad|=0.015389 (grad 0.0s) | E=-74.84410672 Ha  ΔE=9.91e-05 | opt 7.1s | iter 7.4s
+  [ADAPT iter  15] max|grad|=0.010825 (grad 0.0s) | E=-74.84417623 Ha  ΔE=6.95e-05 | opt 6.4s | iter 6.7s
+  [ADAPT iter  16] max|grad|=0.001598 (grad 0.0s) | E=-74.84419215 Ha  ΔE=1.59e-05 | opt 7.4s | iter 7.7s
+  [ADAPT iter  17] max|grad|=0.000337 (grad 0.0s) | E=-74.84420278 Ha  ΔE=1.06e-05 | opt 8.8s | iter 9.1s
+  [ADAPT iter  18] max|grad|=0.000147 (grad 0.0s) | E=-74.84420453 Ha  ΔE=1.75e-06 | opt 10.1s | iter 10.4s
+  [ADAPT iter  19] max|grad|=0.000130 (grad 0.0s) | E=-74.84420566 Ha  ΔE=1.13e-06 | opt 11.6s | iter 11.9s
+  [ADAPT iter  20] max|grad|=0.000046 (grad 0.0s) | E=-74.84420643 Ha  ΔE=7.71e-07 | opt 13.2s | iter 13.6s
+  [ADAPT iter  21] max|grad|=0.000014 (grad 0.0s) | E=-74.84420743 Ha  ΔE=9.95e-07 | opt 14.9s | iter 15.3s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.84420743 Ha | total 139.8s (grad avg 0.0s, opt avg 6.4s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.03 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 140.02 s
+
+  E_HF              = -73.62230609 Ha
+  E_CASCI           = -74.84424051 Ha
+  E_VQE             = -74.84420743 Ha
+  E_FCI (dlm AS)    = -74.84424051 Ha  ← batas VQE
+  Error vs FCI(AS)  = 3.31e-05 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.87586615 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.17e-02 Ha  [✗]
+  Gap AS vs full    = 31.63 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.3m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 6.4s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.3m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 6/15
+
+============================================================
+  VQE: H2O  r = 0.900 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.83676978 Ha
+  E_total (CASCI) = -74.90559252 Ha
+  FermionicOp suku: 573
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.73336088 Ha
+  E_FCI (dalam AS) = -74.90559252 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.93918577 Ha  ← referensi literatur
+  Gap AS vs penuh  = 33.59 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.308894 (grad 0.1s) | E=-73.76071810 Ha  ΔE=7.38e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.252053 (grad 0.0s) | E=-73.77974657 Ha  ΔE=1.90e-02 | opt 0.2s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.132535 (grad 0.0s) | E=-73.82134337 Ha  ΔE=4.16e-02 | opt 0.5s | iter 0.5s
+  [ADAPT iter   4] max|grad|=0.076181 (grad 0.0s) | E=-73.82542597 Ha  ΔE=4.08e-03 | opt 0.7s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.061148 (grad 0.0s) | E=-73.83705083 Ha  ΔE=1.16e-02 | opt 1.7s | iter 1.8s
+  [ADAPT iter   6] max|grad|=0.056723 (grad 0.0s) | E=-73.84087310 Ha  ΔE=3.82e-03 | opt 2.3s | iter 2.4s
+  [ADAPT iter   7] max|grad|=0.044845 (grad 0.0s) | E=-73.84717361 Ha  ΔE=6.30e-03 | opt 3.1s | iter 3.2s
+  [ADAPT iter   8] max|grad|=0.042290 (grad 0.0s) | E=-73.84981306 Ha  ΔE=2.64e-03 | opt 4.2s | iter 4.3s
+  [ADAPT iter   9] max|grad|=0.022763 (grad 0.0s) | E=-74.89871827 Ha  ΔE=1.05e+00 | opt 12.4s | iter 12.6s
+  [ADAPT iter  10] max|grad|=0.071088 (grad 0.0s) | E=-74.90213134 Ha  ΔE=3.41e-03 | opt 4.5s | iter 4.7s
+  [ADAPT iter  11] max|grad|=0.067812 (grad 0.0s) | E=-74.90523908 Ha  ΔE=3.11e-03 | opt 6.7s | iter 6.9s
+  [ADAPT iter  12] max|grad|=0.018573 (grad 0.0s) | E=-74.90537864 Ha  ΔE=1.40e-04 | opt 5.9s | iter 6.1s
+  [ADAPT iter  13] max|grad|=0.012423 (grad 0.0s) | E=-74.90543318 Ha  ΔE=5.45e-05 | opt 4.9s | iter 5.1s
+  [ADAPT iter  14] max|grad|=0.009378 (grad 0.0s) | E=-74.90551642 Ha  ΔE=8.32e-05 | opt 9.6s | iter 9.9s
+  [ADAPT iter  15] max|grad|=0.001121 (grad 0.0s) | E=-74.90551756 Ha  ΔE=1.14e-06 | opt 6.9s | iter 7.1s
+  [ADAPT iter  16] max|grad|=0.000946 (grad 0.0s) | E=-74.90551868 Ha  ΔE=1.12e-06 | opt 8.1s | iter 8.4s
+  [ADAPT iter  17] max|grad|=0.000254 (grad 0.0s) | E=-74.90551944 Ha  ΔE=7.60e-07 | opt 9.5s | iter 9.8s
+  [ADAPT iter  18] max|grad|=0.000204 (grad 0.0s) | E=-74.90552014 Ha  ΔE=6.91e-07 | opt 10.7s | iter 11.1s
+  [ADAPT iter  19] max|grad|=0.000101 (grad 0.0s) | E=-74.90552084 Ha  ΔE=7.06e-07 | opt 12.3s | iter 12.6s
+  [ADAPT iter  20] max|grad|=0.000095 (grad 0.0s) | E=-74.90552154 Ha  ΔE=7.02e-07 | opt 13.9s | iter 14.3s
+  [ADAPT iter  21] max|grad|=0.000017 (grad 0.0s) | E=-74.90552239 Ha  ΔE=8.42e-07 | opt 14.8s | iter 15.3s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.90552239 Ha | total 137.9s (grad avg 0.0s, opt avg 6.3s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.07 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 138.02 s
+
+  E_HF              = -73.73336088 Ha
+  E_CASCI           = -74.90559252 Ha
+  E_VQE             = -74.90552239 Ha
+  E_FCI (dlm AS)    = -74.90559252 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.01e-05 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.93918577 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.37e-02 Ha  [✗]
+  Gap AS vs full    = 33.59 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.3m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 6.3s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.3m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 7/15
+
+============================================================
+  VQE: H2O  r = 1.000 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -68.95822296 Ha
+  E_total (CASCI) = -74.92371855 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -73.85394752 Ha
+  E_FCI (dalam AS) = -74.92371855 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.96473074 Ha  ← referensi literatur
+  Gap AS vs penuh  = 41.01 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.413053 (grad 0.1s) | E=-73.90490955 Ha  ΔE=7.39e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.284555 (grad 0.0s) | E=-73.93258696 Ha  ΔE=2.77e-02 | opt 0.3s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.098748 (grad 0.0s) | E=-73.93866713 Ha  ΔE=6.08e-03 | opt 0.7s | iter 0.8s
+  [ADAPT iter   4] max|grad|=0.094077 (grad 0.0s) | E=-73.95600188 Ha  ΔE=1.73e-02 | opt 0.9s | iter 1.0s
+  [ADAPT iter   5] max|grad|=0.068517 (grad 0.0s) | E=-73.96720691 Ha  ΔE=1.12e-02 | opt 1.4s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.038316 (grad 0.0s) | E=-73.97252435 Ha  ΔE=5.32e-03 | opt 2.1s | iter 2.2s
+  [ADAPT iter   7] max|grad|=0.033635 (grad 0.0s) | E=-73.97893198 Ha  ΔE=6.41e-03 | opt 3.6s | iter 3.7s
+  [ADAPT iter   8] max|grad|=0.030992 (grad 0.0s) | E=-74.92071847 Ha  ΔE=9.42e-01 | opt 7.6s | iter 7.7s
+  [ADAPT iter   9] max|grad|=0.044913 (grad 0.0s) | E=-74.92225382 Ha  ΔE=1.54e-03 | opt 3.8s | iter 4.0s
+  [ADAPT iter  10] max|grad|=0.041878 (grad 0.0s) | E=-74.92360338 Ha  ΔE=1.35e-03 | opt 5.0s | iter 5.2s
+  [ADAPT iter  11] max|grad|=0.008007 (grad 0.0s) | E=-74.92363342 Ha  ΔE=3.00e-05 | opt 3.4s | iter 3.5s
+  [ADAPT iter  12] max|grad|=0.006465 (grad 0.0s) | E=-74.92365219 Ha  ΔE=1.88e-05 | opt 3.6s | iter 3.8s
+  [ADAPT iter  13] max|grad|=0.005445 (grad 0.0s) | E=-74.92367844 Ha  ΔE=2.63e-05 | opt 4.5s | iter 4.7s
+  [ADAPT iter  14] max|grad|=0.001014 (grad 0.0s) | E=-74.92367977 Ha  ΔE=1.33e-06 | opt 5.4s | iter 5.7s
+  [ADAPT iter  15] max|grad|=0.000648 (grad 0.0s) | E=-74.92368045 Ha  ΔE=6.77e-07 | opt 6.3s | iter 6.5s
+  [ADAPT iter  16] max|grad|=0.000281 (grad 0.0s) | E=-74.92368055 Ha  ΔE=1.04e-07 | opt 7.7s | iter 8.0s
+  [ADAPT iter  17] max|grad|=0.000188 (grad 0.0s) | E=-74.92368063 Ha  ΔE=7.40e-08 | opt 8.7s | iter 9.0s
+  [ADAPT iter  18] max|grad|=0.000138 (grad 0.0s) | E=-74.92368069 Ha  ΔE=5.85e-08 | opt 10.1s | iter 10.4s
+  [ADAPT iter  19] max|grad|=0.000087 (grad 0.0s) | E=-74.92368074 Ha  ΔE=5.28e-08 | opt 11.6s | iter 11.9s
+  [ADAPT iter  20] max|grad|=0.000055 (grad 0.0s) | E=-74.92368079 Ha  ΔE=5.25e-08 | opt 13.2s | iter 13.6s
+  [ADAPT iter  21] max|grad|=0.000051 (grad 0.0s) | E=-74.92368084 Ha  ΔE=5.28e-08 | opt 15.1s | iter 15.5s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.92368084 Ha | total 119.4s (grad avg 0.0s, opt avg 5.5s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.04 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 119.56 s
+
+  E_HF              = -73.85394752 Ha
+  E_CASCI           = -74.92371855 Ha
+  E_VQE             = -74.92368084 Ha
+  E_FCI (dlm AS)    = -74.92371855 Ha  ← batas VQE
+  Error vs FCI(AS)  = 3.77e-05 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.96473074 Ha  ← referensi literatur
+  Error vs FCI(full)= 4.10e-02 Ha  [✗]
+  Gap AS vs full    = 41.01 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.0m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 5.5s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.0m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 8/15
+
+============================================================
+  VQE: H2O  r = 1.200 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.20073215 Ha
+  E_total (CASCI) = -74.92323971 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.00859426 Ha
+  E_FCI (dalam AS) = -74.92323971 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.96178484 Ha  ← referensi literatur
+  Gap AS vs penuh  = 38.55 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.221332 (grad 0.1s) | E=-74.02812164 Ha  ΔE=7.40e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.208032 (grad 0.0s) | E=-74.12744412 Ha  ΔE=9.93e-02 | opt 0.3s | iter 0.4s
+  [ADAPT iter   3] max|grad|=0.101399 (grad 0.0s) | E=-74.13073693 Ha  ΔE=3.29e-03 | opt 0.4s | iter 0.4s
+  [ADAPT iter   4] max|grad|=0.036644 (grad 0.0s) | E=-74.13276213 Ha  ΔE=2.03e-03 | opt 0.9s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.035638 (grad 0.0s) | E=-74.13673891 Ha  ΔE=3.98e-03 | opt 1.2s | iter 1.2s
+  [ADAPT iter   6] max|grad|=0.034353 (grad 0.0s) | E=-74.13796665 Ha  ΔE=1.23e-03 | opt 1.7s | iter 1.8s
+  [ADAPT iter   7] max|grad|=0.028990 (grad 0.0s) | E=-74.13873536 Ha  ΔE=7.69e-04 | opt 1.7s | iter 1.8s
+  [ADAPT iter   8] max|grad|=0.019229 (grad 0.0s) | E=-74.45096958 Ha  ΔE=3.12e-01 | opt 9.4s | iter 9.5s
+  [ADAPT iter   9] max|grad|=0.148794 (grad 0.0s) | E=-74.61274513 Ha  ΔE=1.62e-01 | opt 7.5s | iter 7.6s
+  [ADAPT iter  10] max|grad|=0.008036 (grad 0.0s) | E=-74.61280476 Ha  ΔE=5.96e-05 | opt 3.0s | iter 3.1s
+  [ADAPT iter  11] max|grad|=0.004893 (grad 0.0s) | E=-74.61284590 Ha  ΔE=4.11e-05 | opt 3.5s | iter 3.7s
+  [ADAPT iter  12] max|grad|=0.000334 (grad 0.0s) | E=-74.61287289 Ha  ΔE=2.70e-05 | opt 4.3s | iter 4.5s
+  [ADAPT iter  13] max|grad|=0.000351 (grad 0.0s) | E=-74.61289474 Ha  ΔE=2.18e-05 | opt 5.2s | iter 5.4s
+  [ADAPT iter  14] max|grad|=0.000155 (grad 0.0s) | E=-74.61290970 Ha  ΔE=1.50e-05 | opt 5.7s | iter 6.0s
+  [ADAPT iter  15] max|grad|=0.000184 (grad 0.0s) | E=-74.61292364 Ha  ΔE=1.39e-05 | opt 6.8s | iter 7.0s
+  [ADAPT iter  16] max|grad|=0.000100 (grad 0.0s) | E=-74.61293260 Ha  ΔE=8.96e-06 | opt 7.3s | iter 7.6s
+  [ADAPT iter  17] max|grad|=0.000048 (grad 0.0s) | E=-74.61294390 Ha  ΔE=1.13e-05 | opt 8.6s | iter 8.9s
+  [ADAPT iter  18] max|grad|=0.000030 (grad 0.0s) | E=-74.61295002 Ha  ΔE=6.11e-06 | opt 9.9s | iter 10.2s
+  [ADAPT iter  19] max|grad|=0.000034 (grad 0.0s) | E=-74.61296638 Ha  ΔE=1.64e-05 | opt 11.5s | iter 11.8s
+  [ADAPT iter  20] max|grad|=0.000020 (grad 0.0s) | E=-74.61296765 Ha  ΔE=1.27e-06 | opt 13.3s | iter 13.7s
+  [ADAPT iter  21] max|grad|=0.000020 (grad 0.0s) | E=-74.61296917 Ha  ΔE=1.52e-06 | opt 14.9s | iter 15.4s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.61296917 Ha | total 121.6s (grad avg 0.0s, opt avg 5.6s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 310.27 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 310.3 mHa > 5 mHa] — Retry 1/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.221332 (grad 0.0s) | E=-74.02812164 Ha  ΔE=7.40e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.208027 (grad 0.0s) | E=-74.12744412 Ha  ΔE=9.93e-02 | opt 0.4s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.101403 (grad 0.0s) | E=-74.13075846 Ha  ΔE=3.31e-03 | opt 0.3s | iter 0.4s
+  [ADAPT iter   4] max|grad|=0.036323 (grad 0.0s) | E=-74.13273565 Ha  ΔE=1.98e-03 | opt 1.0s | iter 1.1s
+  [ADAPT iter   5] max|grad|=0.035638 (grad 0.0s) | E=-74.13673225 Ha  ΔE=4.00e-03 | opt 1.9s | iter 2.0s
+  [ADAPT iter   6] max|grad|=0.036135 (grad 0.0s) | E=-74.13796813 Ha  ΔE=1.24e-03 | opt 2.2s | iter 2.3s
+  [ADAPT iter   7] max|grad|=0.028979 (grad 0.0s) | E=-74.13875653 Ha  ΔE=7.88e-04 | opt 1.7s | iter 1.8s
+  [ADAPT iter   8] max|grad|=0.019120 (grad 0.0s) | E=-74.45116802 Ha  ΔE=3.12e-01 | opt 11.6s | iter 11.7s
+  [ADAPT iter   9] max|grad|=0.148435 (grad 0.0s) | E=-74.61264438 Ha  ΔE=1.61e-01 | opt 5.9s | iter 6.1s
+  [ADAPT iter  10] max|grad|=0.007706 (grad 0.0s) | E=-74.61292847 Ha  ΔE=2.84e-04 | opt 7.6s | iter 7.7s
+  [ADAPT iter  11] max|grad|=0.001460 (grad 0.0s) | E=-74.61295249 Ha  ΔE=2.40e-05 | opt 7.2s | iter 7.3s
+  [ADAPT iter  12] max|grad|=0.002001 (grad 0.0s) | E=-74.61286315 Ha  ΔE=8.93e-05 | opt 10.2s | iter 10.4s
+  [ADAPT iter  13] max|grad|=0.000725 (grad 0.0s) | E=-74.61288855 Ha  ΔE=2.54e-05 | opt 7.1s | iter 7.3s
+  [ADAPT iter  14] max|grad|=0.000198 (grad 0.0s) | E=-74.61291221 Ha  ΔE=2.37e-05 | opt 17.7s | iter 18.0s
+  [ADAPT iter  15] max|grad|=0.000900 (grad 0.0s) | E=-74.61296219 Ha  ΔE=5.00e-05 | opt 20.2s | iter 20.5s
+  [ADAPT iter  16] max|grad|=0.000940 (grad 0.0s) | E=-74.61297861 Ha  ΔE=1.64e-05 | opt 12.3s | iter 12.6s
+  [ADAPT iter  17] max|grad|=0.000595 (grad 0.0s) | E=-74.61294148 Ha  ΔE=3.71e-05 | opt 14.3s | iter 14.6s
+  [ADAPT iter  18] max|grad|=0.000290 (grad 0.0s) | E=-74.61290874 Ha  ΔE=3.27e-05 | opt 19.9s | iter 20.2s
+  [ADAPT iter  19] max|grad|=0.000276 (grad 0.0s) | E=-74.61281508 Ha  ΔE=9.37e-05 | opt 23.0s | iter 23.4s
+  [ADAPT iter  20] max|grad|=0.000339 (grad 0.0s) | E=-74.61287979 Ha  ΔE=6.47e-05 | opt 18.0s | iter 18.4s
+  [ADAPT iter  21] max|grad|=0.000218 (grad 0.0s) | E=-74.61293559 Ha  ΔE=5.58e-05 | opt 25.3s | iter 25.7s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.61293559 Ha | total 212.5s (grad avg 0.0s, opt avg 9.9s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 310.30 mHa (toleransi: 5 mHa)
+  [ADAPT-VQE] ⚠ Belum konvergen baik [gap CASCI 310.3 mHa > 5 mHa] — Retry 2/5 dengan perturbasi parameter ...
+  [ADAPT iter   1] max|grad|=0.221332 (grad 0.0s) | E=-74.02812164 Ha  ΔE=7.40e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.208031 (grad 0.0s) | E=-74.12744412 Ha  ΔE=9.93e-02 | opt 0.3s | iter 0.4s
+  [ADAPT iter   3] max|grad|=0.101384 (grad 0.0s) | E=-74.13072470 Ha  ΔE=3.28e-03 | opt 0.3s | iter 0.4s
+  [ADAPT iter   4] max|grad|=0.036623 (grad 0.0s) | E=-74.13275199 Ha  ΔE=2.03e-03 | opt 1.0s | iter 1.1s
+  [ADAPT iter   5] max|grad|=0.035633 (grad 0.0s) | E=-74.13674362 Ha  ΔE=3.99e-03 | opt 1.4s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.034818 (grad 0.0s) | E=-74.13794103 Ha  ΔE=1.20e-03 | opt 2.0s | iter 2.1s
+  [ADAPT iter   7] max|grad|=0.029451 (grad 0.0s) | E=-74.13876817 Ha  ΔE=8.27e-04 | opt 2.6s | iter 2.7s
+  [ADAPT iter   8] max|grad|=0.018687 (grad 0.0s) | E=-74.45116597 Ha  ΔE=3.12e-01 | opt 11.8s | iter 11.9s
+  [ADAPT iter   9] max|grad|=0.148928 (grad 0.0s) | E=-74.61269759 Ha  ΔE=1.62e-01 | opt 6.2s | iter 6.3s
+  [ADAPT iter  10] max|grad|=0.007395 (grad 0.0s) | E=-74.61295548 Ha  ΔE=2.58e-04 | opt 12.8s | iter 13.0s
+  [ADAPT iter  11] max|grad|=0.002407 (grad 0.0s) | E=-74.61288724 Ha  ΔE=6.82e-05 | opt 9.5s | iter 9.7s
+  [ADAPT iter  12] max|grad|=0.004593 (grad 0.0s) | E=-74.61291255 Ha  ΔE=2.53e-05 | opt 8.7s | iter 8.9s
+  [ADAPT iter  13] max|grad|=0.000903 (grad 0.0s) | E=-74.61295425 Ha  ΔE=4.17e-05 | opt 16.3s | iter 16.5s
+  [ADAPT iter  14] max|grad|=0.000352 (grad 0.0s) | E=-74.61291442 Ha  ΔE=3.98e-05 | opt 15.3s | iter 15.5s
+  [ADAPT iter  15] max|grad|=0.003174 (grad 0.0s) | E=-74.61316211 Ha  ΔE=2.48e-04 | opt 12.4s | iter 12.6s
+  [ADAPT iter  16] max|grad|=0.003038 (grad 0.0s) | E=-74.91675243 Ha  ΔE=3.04e-01 | opt 59.6s | iter 59.8s
+  [ADAPT iter  17] max|grad|=0.053105 (grad 0.0s) | E=-74.91929461 Ha  ΔE=2.54e-03 | opt 20.2s | iter 20.5s
+  [ADAPT iter  18] max|grad|=0.043025 (grad 0.0s) | E=-74.92050451 Ha  ΔE=1.21e-03 | opt 20.4s | iter 20.7s
+  [ADAPT iter  19] max|grad|=0.002500 (grad 0.0s) | E=-74.91967656 Ha  ΔE=8.28e-04 | opt 19.3s | iter 19.7s
+  [ADAPT iter  20] max|grad|=0.000956 (grad 0.0s) | E=-74.91959175 Ha  ΔE=8.48e-05 | opt 26.4s | iter 26.7s
+  [ADAPT iter  21] max|grad|=0.000003 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 20 iter | 20 op | E=-74.91959175 Ha | total 250.5s (grad avg 0.0s, opt avg 12.3s)
+  [Timing] Optimasi    : 584.98 s
+
+  E_HF              = -74.00859426 Ha
+  E_CASCI           = -74.92323971 Ha
+  E_VQE             = -74.91959175 Ha
+  E_FCI (dlm AS)    = -74.92323971 Ha  ← batas VQE
+  Error vs FCI(AS)  = 3.65e-03 Ha  [✗ chem. acc.]
+  E_FCI (penuh)     = -74.96178484 Ha  ← referensi literatur
+  Error vs FCI(full)= 4.22e-02 Ha  [✗]
+  Gap AS vs full    = 38.55 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 9.7m
+  │    └ ADAPT iter   : 20  (grad avg 0.0s, opt avg 12.3s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 9.8m
+  n_qubit=8 | n_param=20
+
+[PES Scan] Titik 9/15
+
+============================================================
+  VQE: H2O  r = 1.400 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.41899658 Ha
+  E_total (CASCI) = -74.89857036 Ha
+  FermionicOp suku: 573
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.14235363 Ha
+  E_FCI (dalam AS) = -74.89857036 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.93368763 Ha  ← referensi literatur
+  Gap AS vs penuh  = 35.12 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.146887 (grad 0.1s) | E=-74.15224907 Ha  ΔE=7.42e+01 | opt 0.1s | iter 0.2s
+  [ADAPT iter   2] max|grad|=0.203346 (grad 0.0s) | E=-74.23227180 Ha  ΔE=8.00e-02 | opt 0.3s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.055769 (grad 0.0s) | E=-74.23334701 Ha  ΔE=1.08e-03 | opt 0.3s | iter 0.3s
+  [ADAPT iter   4] max|grad|=0.053723 (grad 0.0s) | E=-74.23582667 Ha  ΔE=2.48e-03 | opt 0.7s | iter 0.7s
+  [ADAPT iter   5] max|grad|=0.055465 (grad 0.0s) | E=-74.23924994 Ha  ΔE=3.42e-03 | opt 1.1s | iter 1.2s
+  [ADAPT iter   6] max|grad|=0.046482 (grad 0.0s) | E=-74.24319659 Ha  ΔE=3.95e-03 | opt 1.8s | iter 1.9s
+  [ADAPT iter   7] max|grad|=0.053634 (grad 0.0s) | E=-74.24941038 Ha  ΔE=6.21e-03 | opt 2.7s | iter 2.8s
+  [ADAPT iter   8] max|grad|=0.044322 (grad 0.0s) | E=-74.25286934 Ha  ΔE=3.46e-03 | opt 3.7s | iter 3.9s
+  [ADAPT iter   9] max|grad|=0.033681 (grad 0.0s) | E=-74.25762853 Ha  ΔE=4.76e-03 | opt 7.3s | iter 7.5s
+  [ADAPT iter  10] max|grad|=0.032300 (grad 0.0s) | E=-74.26291980 Ha  ΔE=5.29e-03 | opt 5.9s | iter 6.0s
+  [ADAPT iter  11] max|grad|=0.014122 (grad 0.0s) | E=-74.89550891 Ha  ΔE=6.33e-01 | opt 24.1s | iter 24.3s
+  [ADAPT iter  12] max|grad|=0.032238 (grad 0.0s) | E=-74.89654177 Ha  ΔE=1.03e-03 | opt 7.4s | iter 7.6s
+  [ADAPT iter  13] max|grad|=0.028951 (grad 0.0s) | E=-74.89769963 Ha  ΔE=1.16e-03 | opt 10.9s | iter 11.1s
+  [ADAPT iter  14] max|grad|=0.024736 (grad 0.0s) | E=-74.89800211 Ha  ΔE=3.02e-04 | opt 7.9s | iter 8.2s
+  [ADAPT iter  15] max|grad|=0.010676 (grad 0.0s) | E=-74.89814289 Ha  ΔE=1.41e-04 | opt 9.3s | iter 9.6s
+  [ADAPT iter  16] max|grad|=0.010585 (grad 0.0s) | E=-74.89831535 Ha  ΔE=1.72e-04 | opt 11.0s | iter 11.3s
+  [ADAPT iter  17] max|grad|=0.004225 (grad 0.1s) | E=-74.89833940 Ha  ΔE=2.41e-05 | opt 8.8s | iter 9.2s
+  [ADAPT iter  18] max|grad|=0.001919 (grad 0.0s) | E=-74.89835278 Ha  ΔE=1.34e-05 | opt 10.2s | iter 10.5s
+  [ADAPT iter  19] max|grad|=0.000927 (grad 0.0s) | E=-74.89836196 Ha  ΔE=9.18e-06 | opt 11.7s | iter 12.1s
+  [ADAPT iter  20] max|grad|=0.000412 (grad 0.0s) | E=-74.89837285 Ha  ΔE=1.09e-05 | opt 13.3s | iter 13.7s
+  [ADAPT iter  21] max|grad|=0.000042 (grad 0.0s) | E=-74.89838053 Ha  ΔE=7.67e-06 | opt 15.2s | iter 15.6s
+  [ADAPT iter  22] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.89838053 Ha | total 158.2s (grad avg 0.0s, opt avg 7.3s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.19 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 158.40 s
+
+  E_HF              = -74.14235363 Ha
+  E_CASCI           = -74.89857036 Ha
+  E_VQE             = -74.89838053 Ha
+  E_FCI (dlm AS)    = -74.89857036 Ha  ← batas VQE
+  Error vs FCI(AS)  = 1.90e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.93368763 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.53e-02 Ha  [✗]
+  Gap AS vs full    = 35.12 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.6m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 7.3s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.6m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 10/15
+
+============================================================
+  VQE: H2O  r = 1.600 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.59043402 Ha
+  E_total (CASCI) = -74.87220210 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.25919091 Ha
+  E_FCI (dalam AS) = -74.87220210 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.90423255 Ha  ← referensi literatur
+  Gap AS vs penuh  = 32.03 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.241292 (grad 0.1s) | E=-74.86915796 Ha  ΔE=7.49e+01 | opt 0.3s | iter 0.4s
+  [ADAPT iter   2] max|grad|=0.029282 (grad 0.0s) | E=-74.86979358 Ha  ΔE=6.36e-04 | opt 0.4s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.024660 (grad 0.0s) | E=-74.87006034 Ha  ΔE=2.67e-04 | opt 0.6s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.023295 (grad 0.0s) | E=-74.87030003 Ha  ΔE=2.40e-04 | opt 0.7s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.021480 (grad 0.0s) | E=-74.87077894 Ha  ΔE=4.79e-04 | opt 1.4s | iter 1.5s
+  [ADAPT iter   6] max|grad|=0.020859 (grad 0.0s) | E=-74.87123462 Ha  ΔE=4.56e-04 | opt 2.1s | iter 2.2s
+  [ADAPT iter   7] max|grad|=0.013031 (grad 0.0s) | E=-74.87153535 Ha  ΔE=3.01e-04 | opt 2.8s | iter 3.0s
+  [ADAPT iter   8] max|grad|=0.014135 (grad 0.0s) | E=-74.87163546 Ha  ΔE=1.00e-04 | opt 2.6s | iter 2.8s
+  [ADAPT iter   9] max|grad|=0.011533 (grad 0.0s) | E=-74.87173561 Ha  ΔE=1.00e-04 | opt 3.5s | iter 3.6s
+  [ADAPT iter  10] max|grad|=0.009364 (grad 0.0s) | E=-74.87185209 Ha  ΔE=1.16e-04 | opt 4.3s | iter 4.5s
+  [ADAPT iter  11] max|grad|=0.009028 (grad 0.0s) | E=-74.87196209 Ha  ΔE=1.10e-04 | opt 6.9s | iter 7.1s
+  [ADAPT iter  12] max|grad|=0.003318 (grad 0.0s) | E=-74.87197992 Ha  ΔE=1.78e-05 | opt 4.3s | iter 4.5s
+  [ADAPT iter  13] max|grad|=0.003147 (grad 0.0s) | E=-74.87200803 Ha  ΔE=2.81e-05 | opt 4.7s | iter 4.9s
+  [ADAPT iter  14] max|grad|=0.001919 (grad 0.0s) | E=-74.87202393 Ha  ΔE=1.59e-05 | opt 5.2s | iter 5.5s
+  [ADAPT iter  15] max|grad|=0.000737 (grad 0.0s) | E=-74.87203524 Ha  ΔE=1.13e-05 | opt 6.1s | iter 6.3s
+  [ADAPT iter  16] max|grad|=0.000678 (grad 0.0s) | E=-74.87204629 Ha  ΔE=1.10e-05 | opt 7.2s | iter 7.5s
+  [ADAPT iter  17] max|grad|=0.000372 (grad 0.0s) | E=-74.87205529 Ha  ΔE=9.00e-06 | opt 8.4s | iter 8.6s
+  [ADAPT iter  18] max|grad|=0.000314 (grad 0.0s) | E=-74.87206639 Ha  ΔE=1.11e-05 | opt 9.8s | iter 10.1s
+  [ADAPT iter  19] max|grad|=0.000151 (grad 0.0s) | E=-74.87207537 Ha  ΔE=8.97e-06 | opt 11.3s | iter 11.7s
+  [ADAPT iter  20] max|grad|=0.000135 (grad 0.0s) | E=-74.87209380 Ha  ΔE=1.84e-05 | opt 12.8s | iter 13.2s
+  [ADAPT iter  21] max|grad|=0.000107 (grad 0.0s) | E=-74.87210875 Ha  ΔE=1.49e-05 | opt 14.6s | iter 15.0s
+  [ADAPT iter  22] max|grad|=0.000054 (grad 0.0s) | E=-74.87214026 Ha  ΔE=3.15e-05 | opt 16.4s | iter 16.8s
+  [ADAPT iter  23] max|grad|=0.000030 (grad 0.0s) | E=-74.87215412 Ha  ΔE=1.39e-05 | opt 18.4s | iter 18.9s
+  [ADAPT iter  24] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 23 iter | 23 op | E=-74.87215412 Ha | total 150.3s (grad avg 0.0s, opt avg 6.3s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.05 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 150.54 s
+
+  E_HF              = -74.25919091 Ha
+  E_CASCI           = -74.87220210 Ha
+  E_VQE             = -74.87215412 Ha
+  E_FCI (dlm AS)    = -74.87220210 Ha  ← batas VQE
+  Error vs FCI(AS)  = 4.80e-05 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.90423255 Ha  ← referensi literatur
+  Error vs FCI(full)= 3.21e-02 Ha  [✗]
+  Gap AS vs full    = 32.03 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.5m
+  │    └ ADAPT iter   : 23  (grad avg 0.0s, opt avg 6.3s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.5m
+  n_qubit=8 | n_param=23
+
+[PES Scan] Titik 11/15
+
+============================================================
+  VQE: H2O  r = 1.800 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.72208146 Ha
+  E_total (CASCI) = -74.85197843 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.39 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.34423597 Ha
+  E_FCI (dalam AS) = -74.85197843 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.88169728 Ha  ← referensi literatur
+  Gap AS vs penuh  = 29.72 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.259539 (grad 0.1s) | E=-74.84966112 Ha  ΔE=7.48e+01 | opt 0.3s | iter 0.4s
+  [ADAPT iter   2] max|grad|=0.029899 (grad 0.0s) | E=-74.85032815 Ha  ΔE=6.67e-04 | opt 0.4s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.029633 (grad 0.0s) | E=-74.85074418 Ha  ΔE=4.16e-04 | opt 0.6s | iter 0.7s
+  [ADAPT iter   4] max|grad|=0.028413 (grad 0.0s) | E=-74.85112884 Ha  ΔE=3.85e-04 | opt 0.8s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.013205 (grad 0.0s) | E=-74.85137751 Ha  ΔE=2.49e-04 | opt 1.2s | iter 1.3s
+  [ADAPT iter   6] max|grad|=0.013108 (grad 0.0s) | E=-74.85162394 Ha  ΔE=2.46e-04 | opt 1.4s | iter 1.5s
+  [ADAPT iter   7] max|grad|=0.009811 (grad 0.0s) | E=-74.85182404 Ha  ΔE=2.00e-04 | opt 2.0s | iter 2.1s
+  [ADAPT iter   8] max|grad|=0.006513 (grad 0.0s) | E=-74.85188628 Ha  ΔE=6.22e-05 | opt 1.7s | iter 1.8s
+  [ADAPT iter   9] max|grad|=0.006327 (grad 0.0s) | E=-74.85194551 Ha  ΔE=5.92e-05 | opt 2.3s | iter 2.5s
+  [ADAPT iter  10] max|grad|=0.005139 (grad 0.0s) | E=-74.85196888 Ha  ΔE=2.34e-05 | opt 2.9s | iter 3.0s
+  [ADAPT iter  11] max|grad|=0.003139 (grad 0.0s) | E=-74.85197489 Ha  ΔE=6.01e-06 | opt 3.4s | iter 3.6s
+  [ADAPT iter  12] max|grad|=0.000279 (grad 0.0s) | E=-74.85197564 Ha  ΔE=7.54e-07 | opt 3.9s | iter 4.1s
+  [ADAPT iter  13] max|grad|=0.000181 (grad 0.0s) | E=-74.85197578 Ha  ΔE=1.39e-07 | opt 4.8s | iter 5.0s
+  [ADAPT iter  14] max|grad|=0.000159 (grad 0.0s) | E=-74.85197592 Ha  ΔE=1.34e-07 | opt 5.7s | iter 5.9s
+  [ADAPT iter  15] max|grad|=0.000167 (grad 0.0s) | E=-74.85197595 Ha  ΔE=3.63e-08 | opt 6.7s | iter 7.0s
+  [ADAPT iter  16] max|grad|=0.000152 (grad 0.0s) | E=-74.85197602 Ha  ΔE=6.59e-08 | opt 7.9s | iter 8.1s
+  [ADAPT iter  17] max|grad|=0.000113 (grad 0.0s) | E=-74.85197606 Ha  ΔE=3.93e-08 | opt 9.3s | iter 9.6s
+  [ADAPT iter  18] max|grad|=0.000073 (grad 0.0s) | E=-74.85197609 Ha  ΔE=3.50e-08 | opt 10.7s | iter 11.0s
+  [ADAPT iter  19] max|grad|=0.000095 (grad 0.0s) | E=-74.85197612 Ha  ΔE=2.54e-08 | opt 11.4s | iter 11.8s
+  [ADAPT iter  20] max|grad|=0.000015 (grad 0.0s) | E=-74.85197613 Ha  ΔE=1.17e-08 | opt 12.9s | iter 13.3s
+  [ADAPT iter  21] max|grad|=0.000016 (grad 0.0s) | E=-74.85197614 Ha  ΔE=1.12e-08 | opt 14.7s | iter 15.1s
+  [ADAPT iter  22] max|grad|=0.000013 (grad 0.0s) | E=-74.85197615 Ha  ΔE=9.18e-09 | opt 16.6s | iter 17.0s
+  [ADAPT iter  23] max|grad|=0.000007 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 22 iter | 22 op | E=-74.85197615 Ha | total 126.4s (grad avg 0.0s, opt avg 5.5s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 126.53 s
+
+  E_HF              = -74.34423597 Ha
+  E_CASCI           = -74.85197843 Ha
+  E_VQE             = -74.85197615 Ha
+  E_FCI (dlm AS)    = -74.85197843 Ha  ← batas VQE
+  Error vs FCI(AS)  = 2.28e-06 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.88169728 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.97e-02 Ha  [✗]
+  Gap AS vs full    = 29.72 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.1m
+  │    └ ADAPT iter   : 22  (grad avg 0.0s, opt avg 5.5s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.1m
+  n_qubit=8 | n_param=22
+
+[PES Scan] Titik 12/15
+
+============================================================
+  VQE: H2O  r = 2.000 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.82349113 Ha
+  E_total (CASCI) = -74.83950914 Ha
+  FermionicOp suku: 573
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.39951487 Ha
+  E_FCI (dalam AS) = -74.83950914 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.86768563 Ha  ← referensi literatur
+  Gap AS vs penuh  = 28.18 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.274603 (grad 0.1s) | E=-74.83742765 Ha  ΔE=7.48e+01 | opt 0.3s | iter 0.4s
+  [ADAPT iter   2] max|grad|=0.031417 (grad 0.0s) | E=-74.83793404 Ha  ΔE=5.06e-04 | opt 0.3s | iter 0.3s
+  [ADAPT iter   3] max|grad|=0.030403 (grad 0.0s) | E=-74.83863064 Ha  ΔE=6.97e-04 | opt 0.6s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.030556 (grad 0.0s) | E=-74.83911098 Ha  ΔE=4.80e-04 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.011795 (grad 0.0s) | E=-74.83917227 Ha  ΔE=6.13e-05 | opt 0.7s | iter 0.8s
+  [ADAPT iter   6] max|grad|=0.008045 (grad 0.0s) | E=-74.83923590 Ha  ΔE=6.36e-05 | opt 0.9s | iter 1.0s
+  [ADAPT iter   7] max|grad|=0.007419 (grad 0.0s) | E=-74.83930485 Ha  ΔE=6.90e-05 | opt 1.0s | iter 1.1s
+  [ADAPT iter   8] max|grad|=0.006735 (grad 0.0s) | E=-74.83940684 Ha  ΔE=1.02e-04 | opt 2.0s | iter 2.1s
+  [ADAPT iter   9] max|grad|=0.005238 (grad 0.0s) | E=-74.83944355 Ha  ΔE=3.67e-05 | opt 2.1s | iter 2.2s
+  [ADAPT iter  10] max|grad|=0.004996 (grad 0.0s) | E=-74.83948886 Ha  ΔE=4.53e-05 | opt 2.6s | iter 2.7s
+  [ADAPT iter  11] max|grad|=0.003003 (grad 0.0s) | E=-74.83950343 Ha  ΔE=1.46e-05 | opt 3.4s | iter 3.5s
+  [ADAPT iter  12] max|grad|=0.000921 (grad 0.0s) | E=-74.83950543 Ha  ΔE=2.00e-06 | opt 3.5s | iter 3.7s
+  [ADAPT iter  13] max|grad|=0.000386 (grad 0.0s) | E=-74.83950649 Ha  ΔE=1.06e-06 | opt 4.3s | iter 4.5s
+  [ADAPT iter  14] max|grad|=0.000358 (grad 0.0s) | E=-74.83950706 Ha  ΔE=5.68e-07 | opt 5.4s | iter 5.6s
+  [ADAPT iter  15] max|grad|=0.000280 (grad 0.0s) | E=-74.83950744 Ha  ΔE=3.84e-07 | opt 6.3s | iter 6.5s
+  [ADAPT iter  16] max|grad|=0.000227 (grad 0.0s) | E=-74.83950771 Ha  ΔE=2.64e-07 | opt 7.8s | iter 8.1s
+  [ADAPT iter  17] max|grad|=0.000166 (grad 0.0s) | E=-74.83950792 Ha  ΔE=2.12e-07 | opt 8.8s | iter 9.2s
+  [ADAPT iter  18] max|grad|=0.000102 (grad 0.0s) | E=-74.83950805 Ha  ΔE=1.25e-07 | opt 10.0s | iter 10.3s
+  [ADAPT iter  19] max|grad|=0.000081 (grad 0.0s) | E=-74.83950817 Ha  ΔE=1.28e-07 | opt 11.6s | iter 12.0s
+  [ADAPT iter  20] max|grad|=0.000071 (grad 0.0s) | E=-74.83950823 Ha  ΔE=5.76e-08 | opt 13.1s | iter 13.5s
+  [ADAPT iter  21] max|grad|=0.000022 (grad 0.0s) | E=-74.83950831 Ha  ΔE=7.86e-08 | opt 14.8s | iter 15.3s
+  [ADAPT iter  22] max|grad|=0.000026 (grad 0.0s) | E=-74.83950834 Ha  ΔE=2.64e-08 | opt 16.9s | iter 17.3s
+  [ADAPT iter  23] max|grad|=0.000012 (grad 0.0s) | E=-74.83950834 Ha  ΔE=5.55e-09 | opt 19.0s | iter 19.5s
+  [ADAPT iter  24] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 23 iter | 23 op | E=-74.83950834 Ha | total 141.3s (grad avg 0.0s, opt avg 5.9s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 141.52 s
+
+  E_HF              = -74.39951487 Ha
+  E_CASCI           = -74.83950914 Ha
+  E_VQE             = -74.83950834 Ha
+  E_FCI (dlm AS)    = -74.83950914 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.98e-07 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.86768563 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.82e-02 Ha  [✗]
+  Gap AS vs full    = 28.18 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 2.4m
+  │    └ ADAPT iter   : 23  (grad avg 0.0s, opt avg 5.9s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 2.4m
+  n_qubit=8 | n_param=23
+
+[PES Scan] Titik 13/15
+
+============================================================
+  VQE: H2O  r = 2.200 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.90271234 Ha
+  E_total (CASCI) = -74.83305397 Ha
+  FermionicOp suku: 573
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.43519002 Ha
+  E_FCI (dalam AS) = -74.83305397 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.86020776 Ha  ← referensi literatur
+  Gap AS vs penuh  = 27.15 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.287522 (grad 0.1s) | E=-74.83108852 Ha  ΔE=7.48e+01 | opt 0.3s | iter 0.4s
+  [ADAPT iter   2] max|grad|=0.030668 (grad 0.0s) | E=-74.83180287 Ha  ΔE=7.14e-04 | opt 0.4s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.030551 (grad 0.0s) | E=-74.83231622 Ha  ΔE=5.13e-04 | opt 0.6s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.029722 (grad 0.0s) | E=-74.83280375 Ha  ΔE=4.88e-04 | opt 0.7s | iter 0.8s
+  [ADAPT iter   5] max|grad|=0.017164 (grad 0.0s) | E=-74.83293272 Ha  ΔE=1.29e-04 | opt 0.9s | iter 1.0s
+  [ADAPT iter   6] max|grad|=0.004452 (grad 0.0s) | E=-74.83298236 Ha  ΔE=4.96e-05 | opt 1.1s | iter 1.2s
+  [ADAPT iter   7] max|grad|=0.003616 (grad 0.0s) | E=-74.83300502 Ha  ΔE=2.27e-05 | opt 1.4s | iter 1.6s
+  [ADAPT iter   8] max|grad|=0.003527 (grad 0.0s) | E=-74.83302458 Ha  ΔE=1.96e-05 | opt 2.0s | iter 2.1s
+  [ADAPT iter   9] max|grad|=0.003031 (grad 0.0s) | E=-74.83303806 Ha  ΔE=1.35e-05 | opt 2.3s | iter 2.4s
+  [ADAPT iter  10] max|grad|=0.003385 (grad 0.0s) | E=-74.83304807 Ha  ΔE=1.00e-05 | opt 2.5s | iter 2.7s
+  [ADAPT iter  11] max|grad|=0.001791 (grad 0.0s) | E=-74.83305243 Ha  ΔE=4.36e-06 | opt 3.2s | iter 3.4s
+  [ADAPT iter  12] max|grad|=0.000569 (grad 0.0s) | E=-74.83305273 Ha  ΔE=3.04e-07 | opt 3.6s | iter 3.8s
+  [ADAPT iter  13] max|grad|=0.000295 (grad 0.0s) | E=-74.83305311 Ha  ΔE=3.81e-07 | opt 4.4s | iter 4.5s
+  [ADAPT iter  14] max|grad|=0.000291 (grad 0.0s) | E=-74.83305325 Ha  ΔE=1.38e-07 | opt 5.6s | iter 5.8s
+  [ADAPT iter  15] max|grad|=0.000218 (grad 0.0s) | E=-74.83305342 Ha  ΔE=1.71e-07 | opt 6.4s | iter 6.6s
+  [ADAPT iter  16] max|grad|=0.000162 (grad 0.0s) | E=-74.83305351 Ha  ΔE=9.08e-08 | opt 7.4s | iter 7.7s
+  [ADAPT iter  17] max|grad|=0.000079 (grad 0.0s) | E=-74.83305363 Ha  ΔE=1.16e-07 | opt 8.5s | iter 8.8s
+  [ADAPT iter  18] max|grad|=0.000055 (grad 0.0s) | E=-74.83305366 Ha  ΔE=3.45e-08 | opt 9.9s | iter 10.2s
+  [ADAPT iter  19] max|grad|=0.000045 (grad 0.1s) | E=-74.83305368 Ha  ΔE=2.23e-08 | opt 11.4s | iter 11.9s
+  [ADAPT iter  20] max|grad|=0.000039 (grad 0.0s) | E=-74.83305370 Ha  ΔE=1.42e-08 | opt 13.1s | iter 13.5s
+  [ADAPT iter  21] max|grad|=0.000018 (grad 0.0s) | E=-74.83305370 Ha  ΔE=3.03e-09 | opt 14.8s | iter 15.2s
+  [ADAPT iter  22] max|grad|=0.000009 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.83305370 Ha | total 104.9s (grad avg 0.0s, opt avg 4.8s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 105.09 s
+
+  E_HF              = -74.43519002 Ha
+  E_CASCI           = -74.83305397 Ha
+  E_VQE             = -74.83305370 Ha
+  E_FCI (dlm AS)    = -74.83305397 Ha  ← batas VQE
+  Error vs FCI(AS)  = 2.67e-07 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.86020776 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.72e-02 Ha  [✗]
+  Gap AS vs full    = 27.15 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 1.8m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 4.8s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 1.8m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 14/15
+
+============================================================
+  VQE: H2O  r = 2.500 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -69.99296372 Ha
+  E_total (CASCI) = -74.82943340 Ha
+  FermionicOp suku: 565
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 193
+  [Timing] Hamiltonian : 0.38 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.46570510 Ha
+  E_FCI (dalam AS) = -74.82943340 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.85276332 Ha  ← referensi literatur
+  Gap AS vs penuh  = 23.33 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.303685 (grad 0.1s) | E=-74.82777086 Ha  ΔE=7.48e+01 | opt 0.2s | iter 0.3s
+  [ADAPT iter   2] max|grad|=0.030987 (grad 0.0s) | E=-74.82850699 Ha  ΔE=7.36e-04 | opt 0.4s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.025462 (grad 0.0s) | E=-74.82889236 Ha  ΔE=3.85e-04 | opt 0.6s | iter 0.6s
+  [ADAPT iter   4] max|grad|=0.024884 (grad 0.0s) | E=-74.82926118 Ha  ΔE=3.69e-04 | opt 0.8s | iter 0.9s
+  [ADAPT iter   5] max|grad|=0.018145 (grad 0.0s) | E=-74.82939701 Ha  ΔE=1.36e-04 | opt 1.0s | iter 1.0s
+  [ADAPT iter   6] max|grad|=0.002399 (grad 0.0s) | E=-74.82941229 Ha  ΔE=1.53e-05 | opt 1.1s | iter 1.2s
+  [ADAPT iter   7] max|grad|=0.002189 (grad 0.0s) | E=-74.82942078 Ha  ΔE=8.48e-06 | opt 1.5s | iter 1.6s
+  [ADAPT iter   8] max|grad|=0.002154 (grad 0.0s) | E=-74.82942859 Ha  ΔE=7.82e-06 | opt 2.0s | iter 2.1s
+  [ADAPT iter   9] max|grad|=0.001128 (grad 0.0s) | E=-74.82943096 Ha  ΔE=2.36e-06 | opt 2.3s | iter 2.4s
+  [ADAPT iter  10] max|grad|=0.000766 (grad 0.0s) | E=-74.82943220 Ha  ΔE=1.25e-06 | opt 2.9s | iter 3.0s
+  [ADAPT iter  11] max|grad|=0.000716 (grad 0.0s) | E=-74.82943270 Ha  ΔE=5.00e-07 | opt 3.4s | iter 3.5s
+  [ADAPT iter  12] max|grad|=0.000332 (grad 0.0s) | E=-74.82943300 Ha  ΔE=2.91e-07 | opt 4.0s | iter 4.2s
+  [ADAPT iter  13] max|grad|=0.000329 (grad 0.0s) | E=-74.82943305 Ha  ΔE=5.58e-08 | opt 4.4s | iter 4.6s
+  [ADAPT iter  14] max|grad|=0.000212 (grad 0.0s) | E=-74.82943317 Ha  ΔE=1.20e-07 | opt 5.4s | iter 5.6s
+  [ADAPT iter  15] max|grad|=0.000193 (grad 0.0s) | E=-74.82943323 Ha  ΔE=5.56e-08 | opt 6.4s | iter 6.6s
+  [ADAPT iter  16] max|grad|=0.000099 (grad 0.0s) | E=-74.82943328 Ha  ΔE=4.90e-08 | opt 7.6s | iter 7.8s
+  [ADAPT iter  17] max|grad|=0.000027 (grad 0.0s) | E=-74.82943329 Ha  ΔE=1.90e-08 | opt 9.0s | iter 9.3s
+  [ADAPT iter  18] max|grad|=0.000018 (grad 0.0s) | E=-74.82943331 Ha  ΔE=1.98e-08 | opt 9.9s | iter 10.2s
+  [ADAPT iter  19] max|grad|=0.000028 (grad 0.0s) | E=-74.82943332 Ha  ΔE=4.92e-09 | opt 11.3s | iter 11.7s
+  [ADAPT iter  20] max|grad|=0.000021 (grad 0.0s) | E=-74.82943332 Ha  ΔE=1.33e-09 | opt 12.8s | iter 13.2s
+  [ADAPT iter  21] max|grad|=0.000020 (grad 0.0s) | E=-74.82943332 Ha  ΔE=1.35e-09 | opt 14.8s | iter 15.2s
+  [ADAPT iter  22] max|grad|=0.000004 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 21 iter | 21 op | E=-74.82943332 Ha | total 105.9s (grad avg 0.0s, opt avg 4.8s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 106.07 s
+
+  E_HF              = -74.46570510 Ha
+  E_CASCI           = -74.82943340 Ha
+  E_VQE             = -74.82943332 Ha
+  E_FCI (dlm AS)    = -74.82943340 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.36e-08 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.85276332 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.33e-02 Ha  [✗]
+  Gap AS vs full    = 23.33 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.4s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 1.8m
+  │    └ ADAPT iter   : 21  (grad avg 0.0s, opt avg 4.8s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 1.8m
+  n_qubit=8 | n_param=21
+
+[PES Scan] Titik 15/15
+
+============================================================
+  VQE: H2O  r = 3.000 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(4,4) basis=sto-3g ...
+  E_core         = -70.08874853 Ha
+  E_total (CASCI) = -74.82849835 Ha
+  FermionicOp suku: 1057
+  Encoding: JW
+  Jumlah qubit : 8
+  Jumlah suku  : 361
+  [Timing] Hamiltonian : 0.75 s
+[ADAPT-VQE] Pool: 44 operator spin-conserving (54 operator spin-flip ditolak) (n_so=8, singles+doubles) [UCCSD]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 8 qubit, 4 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -74.51636102 Ha
+  E_FCI (dalam AS) = -74.82849835 Ha  ← batas VQE
+  E_FCI (penuh)    = -74.85349659 Ha  ← referensi literatur
+  Gap AS vs penuh  = 25.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.318819 (grad 0.1s) | E=-74.81846663 Ha  ΔE=7.48e+01 | opt 0.3s | iter 0.4s
+  [ADAPT iter   2] max|grad|=0.147817 (grad 0.1s) | E=-74.82703555 Ha  ΔE=8.57e-03 | opt 0.5s | iter 0.5s
+  [ADAPT iter   3] max|grad|=0.031445 (grad 0.0s) | E=-74.82779908 Ha  ΔE=7.64e-04 | opt 0.7s | iter 0.8s
+  [ADAPT iter   4] max|grad|=0.018053 (grad 0.0s) | E=-74.82801837 Ha  ΔE=2.19e-04 | opt 0.9s | iter 1.0s
+  [ADAPT iter   5] max|grad|=0.017683 (grad 0.0s) | E=-74.82822788 Ha  ΔE=2.10e-04 | opt 1.2s | iter 1.3s
+  [ADAPT iter   6] max|grad|=0.006920 (grad 0.0s) | E=-74.82825821 Ha  ΔE=3.03e-05 | opt 1.0s | iter 1.1s
+  [ADAPT iter   7] max|grad|=0.006753 (grad 0.0s) | E=-74.82829067 Ha  ΔE=3.25e-05 | opt 1.2s | iter 1.3s
+  [ADAPT iter   8] max|grad|=0.000982 (grad 0.0s) | E=-74.82829463 Ha  ΔE=3.95e-06 | opt 1.4s | iter 1.5s
+  [ADAPT iter   9] max|grad|=0.000923 (grad 0.0s) | E=-74.82829611 Ha  ΔE=1.48e-06 | opt 1.6s | iter 1.7s
+  [ADAPT iter  10] max|grad|=0.000789 (grad 0.0s) | E=-74.82829716 Ha  ΔE=1.05e-06 | opt 2.1s | iter 2.2s
+  [ADAPT iter  11] max|grad|=0.000598 (grad 0.0s) | E=-74.82829803 Ha  ΔE=8.63e-07 | opt 2.8s | iter 2.9s
+  [ADAPT iter  12] max|grad|=0.000594 (grad 0.0s) | E=-74.82829828 Ha  ΔE=2.54e-07 | opt 3.1s | iter 3.3s
+  [ADAPT iter  13] max|grad|=0.000545 (grad 0.0s) | E=-74.82829924 Ha  ΔE=9.58e-07 | opt 3.8s | iter 3.9s
+  [ADAPT iter  14] max|grad|=0.000474 (grad 0.0s) | E=-74.82829947 Ha  ΔE=2.35e-07 | opt 4.6s | iter 4.8s
+  [ADAPT iter  15] max|grad|=0.000302 (grad 0.0s) | E=-74.82829960 Ha  ΔE=1.27e-07 | opt 5.4s | iter 5.6s
+  [ADAPT iter  16] max|grad|=0.000266 (grad 0.0s) | E=-74.82829968 Ha  ΔE=7.84e-08 | opt 6.1s | iter 6.3s
+  [ADAPT iter  17] max|grad|=0.000242 (grad 0.0s) | E=-74.82829972 Ha  ΔE=4.38e-08 | opt 6.6s | iter 6.8s
+  [ADAPT iter  18] max|grad|=0.000227 (grad 0.0s) | E=-74.82829978 Ha  ΔE=5.53e-08 | opt 7.7s | iter 7.9s
+  [ADAPT iter  19] max|grad|=0.000090 (grad 0.0s) | E=-74.82829980 Ha  ΔE=2.22e-08 | opt 9.0s | iter 9.2s
+  [ADAPT iter  20] max|grad|=0.000071 (grad 0.0s) | E=-74.82829981 Ha  ΔE=1.48e-08 | opt 10.4s | iter 10.7s
+  [ADAPT iter  21] max|grad|=0.000044 (grad 0.0s) | E=-74.82829982 Ha  ΔE=8.63e-09 | opt 12.1s | iter 12.4s
+  [ADAPT iter  22] max|grad|=0.000038 (grad 0.0s) | E=-74.82829983 Ha  ΔE=6.84e-09 | opt 13.8s | iter 14.2s
+  [ADAPT iter  23] max|grad|=0.000036 (grad 0.0s) | E=-74.82829984 Ha  ΔE=6.22e-09 | opt 15.9s | iter 16.3s
+  [ADAPT iter  24] max|grad|=0.000035 (grad 0.0s) | E=-74.82829984 Ha  ΔE=4.20e-09 | opt 18.4s | iter 18.8s
+  [ADAPT iter  25] max|grad|=0.000034 (grad 0.0s) | E=-74.82829985 Ha  ΔE=5.62e-09 | opt 20.7s | iter 21.2s
+  [ADAPT iter  26] max|grad|=0.000034 (grad 0.0s) | E=-74.82829985 Ha  ΔE=3.60e-09 | opt 21.6s | iter 22.1s
+  [ADAPT iter  27] max|grad|=0.000031 (grad 0.0s) | E=-74.82829985 Ha  ΔE=1.48e-09 | opt 22.6s | iter 23.1s
+  [ADAPT iter  28] max|grad|=0.000028 (grad 0.0s) | E=-74.82829985 Ha  ΔE=2.61e-09 | opt 25.3s | iter 25.9s
+  [ADAPT iter  29] max|grad|=0.000024 (grad 0.0s) | E=-74.82829985 Ha  ΔE=5.09e-11 | opt 28.2s | iter 28.8s
+  [ADAPT iter  30] max|grad|=0.000026 (grad 0.0s) | E=-74.82829986 Ha  ΔE=4.84e-09 | opt 31.7s | iter 32.3s
+  [ADAPT iter  31] max|grad|=0.000020 (grad 0.0s) | E=-74.82829986 Ha  ΔE=2.20e-09 | opt 35.1s | iter 35.8s
+  [ADAPT iter  32] max|grad|=0.000019 (grad 0.0s) | E=-74.82829986 Ha  ΔE=2.29e-09 | opt 39.4s | iter 40.1s
+  [ADAPT iter  33] max|grad|=0.000018 (grad 0.0s) | E=-74.82829986 Ha  ΔE=1.67e-09 | opt 43.1s | iter 43.9s
+  [ADAPT iter  34] max|grad|=0.000017 (grad 0.0s) | E=-74.82829987 Ha  ΔE=2.12e-09 | opt 47.4s | iter 48.2s
+  [ADAPT iter  35] max|grad|=0.000018 (grad 0.0s) | E=-74.82829987 Ha  ΔE=2.72e-10 | opt 52.5s | iter 53.4s
+  [ADAPT iter  36] max|grad|=0.000013 (grad 0.0s) | E=-74.82829987 Ha  ΔE=2.56e-09 | opt 57.5s | iter 58.5s
+  [ADAPT iter  37] max|grad|=0.000012 (grad 0.0s) | E=-74.82829987 Ha  ΔE=2.40e-09 | opt 62.8s | iter 63.8s
+  [ADAPT iter  38] max|grad|=0.000007 (grad 0.0s) → Konvergen grad (< 1e-05)
+
+[ADAPT-VQE] Selesai: 37 iter | 37 op | E=-74.82829987 Ha | total 633.0s (grad avg 0.0s, opt avg 16.7s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.20 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 633.52 s
+
+  E_HF              = -74.51636102 Ha
+  E_CASCI           = -74.82849835 Ha
+  E_VQE             = -74.82829987 Ha
+  E_FCI (dlm AS)    = -74.82849835 Ha  ← batas VQE
+  Error vs FCI(AS)  = 1.98e-04 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -74.85349659 Ha  ← referensi literatur
+  Error vs FCI(full)= 2.52e-02 Ha  [✗]
+  Gap AS vs full    = 25.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.8s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 10.6m
+  │    └ ADAPT iter   : 37  (grad avg 0.0s, opt avg 16.7s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 10.6m
+  n_qubit=8 | n_param=37
+
+[PES Scan] Selesai: 2026-07-01 17:46:18
+[PES Scan] Hasil disimpan: /mgpfs/home/nhandayani/vqe_hybrid/output/H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+
+  r (Å)     E_VQE (Ha)     E_FCI (Ha)  Error (Ha)  CA  n_op    t_opt  t_total
+─────────────────────────────────────────────────────────────────────────────
+  0.500   -73.93876058   -73.96732029    9.21e-04   ✓    21     8.8m     8.8m
+  0.600   -74.45286565   -74.48262037    8.81e-04   ✓    21     8.7m     8.7m
+  0.700   -74.71307621   -74.74403775    8.72e-04   ✓    21    10.6m    10.6m
+  0.740   -74.77663605   -74.80794307    6.35e-04   ✓    21     5.2m     5.2m
+  0.800   -74.84420743   -74.87586615    3.31e-05   ✓    21     2.3m     2.3m
+  0.900   -74.90552239   -74.93918577    7.01e-05   ✓    21     2.3m     2.3m
+  1.000   -74.92368084   -74.96473074    3.77e-05   ✓    21     2.0m     2.0m
+  1.200   -74.91959175   -74.96178484    3.65e-03   ✗    20     9.7m     9.8m
+  1.400   -74.89838053   -74.93368763    1.90e-04   ✓    21     2.6m     2.6m
+  1.600   -74.87215412   -74.90423255    4.80e-05   ✓    23     2.5m     2.5m
+  1.800   -74.85197615   -74.88169728    2.28e-06   ✓    22     2.1m     2.1m
+  2.000   -74.83950834   -74.86768563    7.98e-07   ✓    23     2.4m     2.4m
+  2.200   -74.83305370   -74.86020776    2.67e-07   ✓    21     1.8m     1.8m
+  2.500   -74.82943332   -74.85276332    7.36e-08   ✓    21     1.8m     1.8m
+  3.000   -74.82829987   -74.85349659    1.98e-04   ✓    37    10.6m    10.6m
+─────────────────────────────────────────────────────────────────────────────
+  TOTAL                                                        1.22h    1.23h
+
+[PES Scan] Waktu program keseluruhan :   1.23h
+[PES Scan] Total waktu optimasi      :   1.22h
+[RUN] VQE selesai.
+[RUN] Cek output: ls /mgpfs/home/nhandayani/vqe_hybrid/output
+total 1.0K
+-rw-r--r-- 1 nhandayani student  66K Jul  1 17:46 H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+drwxr-xr-x 2 nhandayani student 4.0K Jul  1 16:03 ok
+drwxr-xr-x 2 nhandayani student 4.0K Jun 30 13:16 raw
+
+[PLOT] Membuat plot PES dan error ...
+[Plot] Memuat 15 / 15 titik valid dari /mgpfs/home/nhandayani/vqe_hybrid/output/H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+[Plot] PES tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_pes.jpg
+[Plot] Error plot tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_error.jpg
+[Plot] Konvergensi tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2O_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_convergence_req.jpg
