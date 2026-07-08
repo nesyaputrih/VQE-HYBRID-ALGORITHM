@@ -17,6 +17,7 @@ from qiskit_nature.second_q.mappers import (
 from qiskit_nature.second_q.operators import FermionicOp
 import config
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Helper: mapper selector
 # ──────────────────────────────────────────────────────────────────────────────
@@ -91,6 +92,29 @@ def _run_pyscf_casscf(mol: gto.Mole) -> dict:
     }
 
 
+def _run_pyscf_full(mol: gto.Mole) -> dict:
+    """Tanpa active space: pakai semua orbital molekul (full space) dari RHF."""
+    mf = scf.RHF(mol)
+    mf.verbose = 0
+    mf.kernel()
+
+    nmo = mf.mo_coeff.shape[1]
+
+    hcore = mf.get_hcore()
+    h1e = mf.mo_coeff.T @ hcore @ mf.mo_coeff
+    h2e = ao2mo.restore(1, ao2mo.kernel(mol, mf.mo_coeff), nmo)
+    ecore = float(mf.energy_nuc())
+
+    return {
+        "h1e"   : h1e,
+        "h2e"   : h2e,
+        "ecore" : ecore,
+        "e_cas" : float(mf.e_tot),
+        "mf"    : mf,
+        "mc"    : None,
+    }
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Bangun FermionicOp dari integral h1e / h2e
 # ──────────────────────────────────────────────────────────────────────────────
@@ -98,38 +122,21 @@ def _run_pyscf_casscf(mol: gto.Mole) -> dict:
 def _integrals_to_fermionic_op(h1e: np.ndarray, h2e: np.ndarray,
                                 ecore: float, ncas: int) -> FermionicOp:
     """
-    Konversi integral satu- dan dua-elektron ke FermionicOp Qiskit Nature.
-
-    Konvensi spin-orbital: indeks 0,2,4,... = alpha; 1,3,5,... = beta
-    (interleaved ordering yang dipakai Qiskit Nature).
-
-    H = ecore
-      + Σ_{pq,σ} h1e[p,q] a†_{p,σ} a_{q,σ}
-      + ½ Σ_{pqrs,σσ'} h2e[p,q,r,s] a†_{p,σ} a†_{r,σ'} a_{s,σ'} a_{q,σ}
-
-    h2e dalam konvensi chemist: (pq|rs) = ∫ φ_p*(1)φ_q(1) 1/r12 φ_r*(2)φ_s(2)
+    [FIX] Konvensi BLOCK ordering: alpha = spin-orbital 0..ncas-1,
+    beta = spin-orbital ncas..2*ncas-1. Konsisten dgn konvensi internal
+    qiskit_nature.second_q (HartreeFock, UCC/UCCSD).
     """
-    n_so = 2 * ncas   # jumlah spin-orbital
-    data = {}
-
-    # ── konstanta (nuclear repulsion + core energy) ───────────────────────────
-    data[""] = ecore
-
-    # ── suku satu-elektron ────────────────────────────────────────────────────
+    n_so = 2 * ncas
+    data = {"": ecore}
     for p in range(ncas):
         for q in range(ncas):
             coeff = h1e[p, q]
             if abs(coeff) < 1e-14:
                 continue
-            # alpha: spin-orbital 2p, 2q
-            key_a = f"+_{2*p} -_{2*q}"
+            key_a = f"+_{p} -_{q}"                 # alpha block
             data[key_a] = data.get(key_a, 0.0) + coeff
-            # beta: spin-orbital 2p+1, 2q+1
-            key_b = f"+_{2*p+1} -_{2*q+1}"
+            key_b = f"+_{p+ncas} -_{q+ncas}"        # beta block
             data[key_b] = data.get(key_b, 0.0) + coeff
-
-    # ── suku dua-elektron ─────────────────────────────────────────────────────
-    # h2e[p,q,r,s] = (pq|rs), faktor 1/2 dari definisi Hamiltonian
     for p in range(ncas):
         for q in range(ncas):
             for r in range(ncas):
@@ -137,20 +144,15 @@ def _integrals_to_fermionic_op(h1e: np.ndarray, h2e: np.ndarray,
                     coeff = 0.5 * h2e[p, q, r, s]
                     if abs(coeff) < 1e-14:
                         continue
-                    # Empat kombinasi spin: αα, αβ, βα, ββ
                     for s1, s2 in [(0, 0), (0, 1), (1, 0), (1, 1)]:
-                        pa = 2*p + s1
-                        qa = 2*q + s1
-                        rb = 2*r + s2
-                        sb = 2*s + s2
+                        pa = p + s1 * ncas
+                        qa = q + s1 * ncas
+                        rb = r + s2 * ncas
+                        sb = s + s2 * ncas
                         key = f"+_{pa} +_{rb} -_{sb} -_{qa}"
                         data[key] = data.get(key, 0.0) + coeff
-
-    # Filter suku nol setelah akumulasi
     data = {k: v for k, v in data.items() if abs(v) > 1e-14}
-
     return FermionicOp(data, num_spin_orbitals=n_so)
-
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Fungsi utama
@@ -180,12 +182,15 @@ def build_qubit_hamiltonian(mol: gto.Mole, method: str = None, encoding: str = N
         cas_data = _run_pyscf_casci(mol)
     elif method.upper() == "CASSCF":
         cas_data = _run_pyscf_casscf(mol)
+    elif method.upper() == "NONE":
+        cas_data = _run_pyscf_full(mol)
     else:
-        raise ValueError(f"Method '{method}' tidak dikenal. Pilih: CASCI | CASSCF")
+        raise ValueError(f"Method '{method}' tidak dikenal. Pilih: CASCI | CASSCF | NONE")
 
     h1e   = cas_data["h1e"]
     h2e   = cas_data["h2e"]
     ecore = cas_data["ecore"]
+    ncas  = h1e.shape[0]  # untuk method="NONE", ini beda dari config.N_ACTIVE_ORBITALS
 
     print(f"  E_core         = {ecore:.8f} Ha")
     print(f"  E_total ({method}) = {cas_data['e_cas']:.8f} Ha")

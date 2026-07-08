@@ -4,17 +4,12 @@ ansatz.py
 Build ansatz VQE: UCCSD, kUpCCGSD, dan ADAPT-VQE.
 Semua output berupa QuantumCircuit Qiskit yang siap digunakan dalam VQE loop.
 
-[VERSION] 2026-07-01-v5-spin-conserving-pool
+[VERSION] 2026-06-30-v4-restart-sanity-check
 Fitur: ADAPT-VQE dengan variational principle sanity check + auto-restart
        jika E_VQE > E_HF (indikasi local minimum / optimizer gagal).
-       [FIX v5] Operator pool sekarang difilter agar hanya memuat eksitasi
-       yang menjaga konservasi spin (Sz). Sebelumnya pool memuat SEMUA
-       kombinasi spin-orbital tanpa filter, termasuk eksitasi spin-flip
-       (alpha<->beta) yang tidak fisis untuk molekul singlet seperti H2O.
-       Ini diduga menjadi penyebab utama lonjakan error VQE-FCI di region
-       disosiatif (R >= 2.2 A), karena ADAPT bisa memilih operator yang
-       secara gradien "menarik" tapi mengontaminasi spin state.
 """
+
+from multiprocessing import pool
 
 import numpy as np
 import time
@@ -34,6 +29,7 @@ from qiskit_nature.second_q.mappers import (
 from qiskit_nature.second_q.circuit.library import HartreeFock
 
 import config
+#from vqe_hybrid.diagnose_h2_pool import H_mat
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -218,120 +214,86 @@ class AdaptVQE:
     # ── Operator pool ─────────────────────────────────────────────────────────
     def _build_operator_pool(self):
         """
-        Build pool operator ADAPT dari semua kemungkinan single dan double
-        excitation pada spin-orbital space (bukan hanya HF occ/virt).
-
-        Untuk menangani karakter multi-reference di geometri stretched,
-        semua pasangan (p,q) dan (p,q,r,s) dimasukkan ke pool tanpa
-        membatasi pada occupied/virtual dari HF reference.
-
-        [FIX v5] Filter konservasi spin (Sz) ditambahkan: konvensi indeks
-        spin-orbital interleaved (genap = alpha, ganjil = beta), sama
-        seperti di hamiltonian.py. Tanpa filter ini, pool memuat operator
-        spin-flip (alpha<->beta) yang tidak fisis untuk molekul singlet
-        closed-shell seperti H2O, dan bisa dipilih ADAPT karena gradiennya
-        nonzero secara numerik — terutama berbahaya di region disosiatif
-        di mana orbital HOMO/LUMO nyaris degenerate.
-        """
-        from qiskit.quantum_info import SparsePauliOp as SPS
+        [FIX MENYELURUH] Ganti hand-rolled Pauli algebra (_single_exc/_double_exc)
+        dengan FermionicOp + mapper yang SAMA dengan Hamiltonian. Ini menghindari
+        3 bug sebelumnya sekaligus:
+            (a) mismatch ordering interleaved vs block,
+            (b) salah tanda koefisien Pauli di formula double-excitation manual,
+            (c) enumerasi creation/annihilation pair yang naif & pecah Z-string
+                begitu quadruple index tidak sorted monoton.
+        Operator pool sekarang dibangun G = i*(T - T_dagger) via FermionicOp,
+        lalu di-map dengan mapper yang identik dengan hamiltonian.py, sehingga
+        ordering & tanda otomatis konsisten tanpa hand-roll Pauli string lagi.
+    """
         from itertools import combinations
+        from qiskit.quantum_info import SparsePauliOp
+        from qiskit_nature.second_q.operators import FermionicOp
+        import numpy as np
 
-        n_so = 2 * config.N_ACTIVE_ORBITALS   # jumlah spin-orbital total
+        n_so = 2 * config.N_ACTIVE_ORBITALS
+        half = n_so // 2   # block ordering: alpha = [0,half), beta = [half,n_so)
+        mapper = _get_mapper(self.encoding)   # HARUS mapper yg sama dgn Hamiltonian
         pool = []
         n_rejected_spin = 0
 
-        # ── Helper: single excitation a†_p a_q - h.c. ────────────────────────
-        def _single_exc(p, q):
-            if p == q:
+        def _generator_op(fop_dict):
+            T = FermionicOp(fop_dict, num_spin_orbitals=n_so)
+            G = T - T.adjoint()
+            qubit_G = mapper.map(G).simplify(atol=1e-12)
+            if len(qubit_G) == 0:
                 return None
-            paulis, coeffs = [], []
-            # XY term
-            lbl = ["I"] * n_so
-            lbl[p] = "X"; lbl[q] = "Y"
-            for m in range(min(p,q)+1, max(p,q)):
-                lbl[m] = "Z"
-            paulis.append("".join(reversed(lbl))); coeffs.append(0.5)
-            # YX term
-            lbl = ["I"] * n_so
-            lbl[p] = "Y"; lbl[q] = "X"
-            for m in range(min(p,q)+1, max(p,q)):
-                lbl[m] = "Z"
-            paulis.append("".join(reversed(lbl))); coeffs.append(-0.5)
-            op = SPS(paulis, coeffs=coeffs).simplify(atol=1e-12)
-            return op if len(op) > 0 else None
+            op = (1j * qubit_G).simplify(atol=1e-12)
+            return SparsePauliOp(op.paulis, coeffs=np.real(op.coeffs))
 
-        # ── Helper: double excitation a†_p a†_q a_r a_s - h.c. ──────────────
-        def _double_exc(p, q, r, s):
-            i, j = sorted([p, q])
-            k, l = sorted([r, s])
-            if len({i, j, k, l}) < 4:   # semua indeks harus unik
-                return None
-
-            pauli_patterns = [
-                (("X","Y","X","X"),  0.125),
-                (("X","X","X","Y"), -0.125),
-                (("Y","X","X","X"), -0.125),
-                (("X","X","Y","X"),  0.125),
-                (("Y","Y","Y","X"),  0.125),
-                (("Y","X","Y","Y"), -0.125),
-                (("X","Y","Y","Y"), -0.125),
-                (("Y","Y","X","Y"),  0.125),
-            ]
-            paulis, coeffs = [], []
-            for (xi,xj,xk,xl), c in pauli_patterns:
-                lbl = ["I"] * n_so
-                lbl[i]=xi; lbl[j]=xj; lbl[k]=xk; lbl[l]=xl
-                for m in range(i+1, j): lbl[m] = "Z"
-                for m in range(j+1, k): lbl[m] = "Z"
-                for m in range(k+1, l): lbl[m] = "Z"
-                paulis.append("".join(reversed(lbl))); coeffs.append(c)
-            op = SPS(paulis, coeffs=coeffs).simplify(atol=1e-12)
-            return op if len(op) > 0 else None
-
-        # ── Singles: hanya pasangan spin-orbital dengan spin SAMA ────────────
-        # (alpha<->alpha atau beta<->beta). Konvensi: indeks genap = alpha,
-        # indeks ganjil = beta (lihat hamiltonian.py::_integrals_to_fermionic_op).
+        # ── Singles: hanya pasangan spin-orbital dgn spin SAMA (block conv.) ────
         for p, q in combinations(range(n_so), 2):
-            if p % 2 != q % 2:
+            if (p < half) != (q < half):
                 n_rejected_spin += 1
                 continue
-            op = _single_exc(p, q)
+            op = _generator_op({f"+_{p} -_{q}": 1.0})
             if op is not None:
                 pool.append(op)
 
-        # ── Doubles: hanya kuartet yang menjaga total Sz ───────────────────
-        # creation pair (p,q) harus punya jumlah paritas spin sama dengan
-        # annihilation pair (r,s): Sz(p)+Sz(q) == Sz(r)+Sz(s).
-        for p, q, r, s in combinations(range(n_so), 4):
-            if (p % 2 + q % 2) != (r % 2 + s % 2):
-                n_rejected_spin += 1
-                continue
-            op = _double_exc(p, q, r, s)
-            if op is not None:
-                pool.append(op)
+        # ── Doubles: creation-pair x annihilation-pair independen, filter Sz ────
+        seen_ops = set()
+        pairs = list(combinations(range(n_so), 2))
+        for (p, q) in pairs:
+            for (r, s) in pairs:
+                if len({p, q, r, s}) < 4:
+                    continue
+                key = tuple(sorted([tuple(sorted([p, q])), tuple(sorted([r, s]))]))
+                if key in seen_ops:
+                    continue
+                seen_ops.add(key)
+
+                sz_pq = int(p < half) + int(q < half)
+                sz_rs = int(r < half) + int(s < half)
+                if sz_pq != sz_rs:
+                    n_rejected_spin += 1
+                    continue
+
+                op = _generator_op({f"+_{p} +_{q} -_{s} -_{r}": 1.0})
+                if op is not None:
+                    pool.append(op)
 
         self.pool = pool
         print(f"[ADAPT-VQE] Pool: {len(pool)} operator spin-conserving "
-              f"({n_rejected_spin} operator spin-flip ditolak) "
-              f"(n_so={n_so}, singles+doubles) [{self.pool_type}]")
+              f"({n_rejected_spin} ditolak) (n_so={n_so}, singles+doubles) "
+              f"[via FermionicOp+mapper, konsisten dgn Hamiltonian]")
 
     # ── Gradien via parameter shift pada statevector ──────────────────────────
     def _compute_gradients(self, statevector: np.ndarray) -> np.ndarray:
         """
-        Hitung |⟨ψ|[H, iA_k]|ψ⟩| untuk setiap A_k dalam pool yang belum dipakai.
+        Hitung |⟨ψ|[H, A_k]|ψ⟩| untuk setiap A_k dalam pool yang belum dipakai.
 
-        Gunakan statevector langsung (bukan Estimator + sirkuit) agar lebih
-        efisien dan menghindari masalah decompose/bind.
-
-        Gradien eksak:
-            grad_k = |⟨ψ|[H, iA_k]|ψ⟩|
-                   = |⟨ψ|H·(iA_k)|ψ⟩ - ⟨ψ|(iA_k)·H|ψ⟩|
-
-        Implementasi via matriks sparse dari SparsePauliOp.
+        [FIX] Operator pool (dari _generator_op) adalah HERMITIAN (koefisien
+        real), BUKAN anti-Hermitian. Untuk H dan A_k sama-sama Hermitian,
+        komutator [H, A_k] selalu ANTI-Hermitian, sehingga ⟨ψ|[H,A_k]|ψ⟩
+        murni IMAJINER. Ambil bagian .imag, bukan .real (yang selalu ~0).
         """
         from qiskit.quantum_info import Statevector
 
-        psi   = statevector          # np.ndarray shape (2^n,)
+        psi   = statevector
         H_mat = self.hamiltonian.to_matrix(sparse=True)
         Hpsi  = H_mat.dot(psi)
 
@@ -341,14 +303,10 @@ class AdaptVQE:
                 grads[k] = 0.0
                 continue
             try:
-                A_mat  = A_k.to_matrix(sparse=True)
-                Apsi   = A_mat.dot(psi)
-                # ⟨ψ|H·iA|ψ⟩ - ⟨ψ|iA·H|ψ⟩ = i(⟨Hψ|Aψ⟩ - ⟨Aψ|Hψ⟩) ... tapi
-                # karena A_k real dan anti-Hermitian, pakai langsung:
-                # grad = 2 * Im(⟨ψ|H·A|ψ⟩)
-                HAp  = H_mat.dot(Apsi)
-                grad = 2.0 * abs(np.vdot(psi, HAp).imag)
-                grads[k] = grad
+                A_mat = A_k.to_matrix(sparse=True)
+                Apsi  = A_mat.dot(psi)
+                comm_val = np.vdot(psi, H_mat.dot(Apsi)) - np.vdot(psi, A_mat.dot(Hpsi))
+                grads[k] = abs(comm_val.imag)   # <-- diganti dari .real
             except Exception:
                 grads[k] = 0.0
 
@@ -493,7 +451,22 @@ class AdaptVQE:
                   f"(grad {t_grad:.1f}s)", end="", flush=True)
 
             if max_grad < self.grad_tol:
-                print(f" → Konvergen grad (< {self.grad_tol})")
+                # Cek apakah ini karena HF state sudah = ground state
+                from qiskit.quantum_info import Statevector
+                e_hf_check = float(np.real(
+                    Statevector(self.hf_circuit).expectation_value(self.hamiltonian)
+                ))
+                e_gs_check = float(np.linalg.eigvalsh(
+                    self.hamiltonian.to_matrix()
+                )[0].real)
+                if abs(e_hf_check - e_gs_check) < 1e-6:
+                    print(f" → HF = ground state (E_HF ≈ E_FCI), tidak perlu ADAPT")
+                    energies.append(e_hf_check)
+                    e_min = e_hf_check
+                else:
+                    print(f" → Konvergen grad (< {self.grad_tol})")
+                    print(f"  [WARN] Semua gradien nol tapi E_HF={e_hf_check:.6f} ≠ E_GS={e_gs_check:.6f}")
+                    print(f"  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.")
                 iter_times.append(time.time() - t_iter_start)
                 break
 
@@ -553,6 +526,15 @@ class AdaptVQE:
             circuit = self.hf_circuit.copy()
 
         e_final = energies[-1] if energies else float("nan")
+
+        # Jika tidak ada iterasi (0 operator), gunakan energi HF sebagai fallback
+        if np.isnan(e_final) and not self.selected_ops:
+            from qiskit.quantum_info import Statevector
+            e_final = float(np.real(
+                Statevector(self.hf_circuit).expectation_value(self.hamiltonian)
+            ))
+            energies = [e_final]
+            print(f"  [INFO] 0 operator ADAPT → menggunakan E_HF = {e_final:.8f} Ha")
         n_iter  = len(energies)
 
         if opt_times:
