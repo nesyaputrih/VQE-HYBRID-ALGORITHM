@@ -1,0 +1,877 @@
+========================================================
+  VQE Hybrid Algorithm — HPC BRIN
+  User      : nhandayani
+  Job ID    : 499065
+  Node      : trembesi69
+  CPUs      : 12
+  Mem       : 65536 MB
+  Mulai     : 2026-07-08 14:34:37
+  Output    : /mgpfs/home/nhandayani/vqe_hybrid/output
+  Plot      : /mgpfs/home/nhandayani/vqe_hybrid/plot
+  Log/Error : /mgpfs/home/nhandayani/vqe_hybrid/error
+========================================================
+
+[ENV] Python  : Python 3.10.20
+[ENV] Lokasi  : /mgpfs/home/nhandayani/.conda/envs/mycenvn/bin/python
+[ENV] Conda   : mycenvn               *  /mgpfs/home/nhandayani/.conda/envs/mycenvn
+[ENV] PySCF       : 2.13.0
+[ENV] OpenFermion : 1.7.1
+[ENV] Qiskit      : 2.3.1
+[ENV] Qiskit-Nat  : 0.7.2
+
+[CONFIG] Konfigurasi aktif:
+MOLECULE = "H2"
+ACTIVE_SPACE_METHOD = "CASCI"
+N_ACTIVE_ELECTRONS = 2
+N_ACTIVE_ORBITALS  = 2
+ENCODING = "JW"
+ANSATZ_TYPE = "ADAPT-VQE"
+OPTIMIZER_TYPE = "L-BFGS-B"
+BASIS = "sto-3g"
+
+[RUN] Memulai VQE PES scan ...
+  [H2] r = 3.000 Å  →  2 AO, 2 elektron
+  [H2] r = 3.187 Å  →  2 AO, 2 elektron
+  [H2] r = 3.373 Å  →  2 AO, 2 elektron
+  [H2] r = 3.560 Å  →  2 AO, 2 elektron
+  [H2] r = 3.747 Å  →  2 AO, 2 elektron
+  [H2] r = 3.933 Å  →  2 AO, 2 elektron
+  [H2] r = 4.120 Å  →  2 AO, 2 elektron
+  [H2] r = 4.307 Å  →  2 AO, 2 elektron
+  [H2] r = 4.493 Å  →  2 AO, 2 elektron
+  [H2] r = 4.680 Å  →  2 AO, 2 elektron
+  [H2] r = 4.867 Å  →  2 AO, 2 elektron
+  [H2] r = 5.053 Å  →  2 AO, 2 elektron
+  [H2] r = 5.240 Å  →  2 AO, 2 elektron
+  [H2] r = 5.427 Å  →  2 AO, 2 elektron
+  [H2] r = 5.613 Å  →  2 AO, 2 elektron
+  [H2] r = 5.800 Å  →  2 AO, 2 elektron
+
+[PES Scan] H2: 16 titik ikatan
+[PES Scan] Mulai: 2026-07-08 14:34:43
+
+[PES Scan] Titik 1/16
+
+============================================================
+  VQE: H2  r = 3.000 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.17639240 Ha
+  E_total (CASCI) = -0.93363184 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.16 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.65604825 Ha
+  E_FCI (dalam AS) = -0.93363184 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93363184 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.598423 (grad 0.0s) | E=-0.93363184 Ha  ΔE=9.34e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.656048 ≠ E_GS=-0.933632
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93363184 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.18 s
+
+  E_HF              = -0.65604825 Ha
+  E_CASCI           = -0.93363184 Ha
+  E_VQE             = -0.93363184 Ha
+  E_FCI (dlm AS)    = -0.93363184 Ha  ← batas VQE
+  Error vs FCI(AS)  = 9.55e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93363184 Ha  ← referensi literatur
+  Error vs FCI(full)= 9.10e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.2s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.4s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 2/16
+
+============================================================
+  VQE: H2  r = 3.187 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.16605979 Ha
+  E_total (CASCI) = -0.93339159 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.08 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.64442638 Ha
+  E_FCI (dalam AS) = -0.93339159 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93339159 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.608641 (grad 0.0s) | E=-0.93339159 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.644426 ≠ E_GS=-0.933392
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93339159 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.64442638 Ha
+  E_CASCI           = -0.93339159 Ha
+  E_VQE             = -0.93339159 Ha
+  E_FCI (dlm AS)    = -0.93339159 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.99e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93339159 Ha  ← referensi literatur
+  Error vs FCI(full)= 6.44e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 3/16
+
+============================================================
+  VQE: H2  r = 3.373 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.15687071 Ha
+  E_total (CASCI) = -0.93327215 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.05 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.63509413 Ha
+  E_FCI (dalam AS) = -0.93327215 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93327215 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.617777 (grad 0.0s) | E=-0.93327215 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.635094 ≠ E_GS=-0.933272
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93327215 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.63509413 Ha
+  E_CASCI           = -0.93327215 Ha
+  E_VQE             = -0.93327215 Ha
+  E_FCI (dlm AS)    = -0.93327215 Ha  ← batas VQE
+  Error vs FCI(AS)  = 8.66e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93327215 Ha  ← referensi literatur
+  Error vs FCI(full)= 8.33e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 4/16
+
+============================================================
+  VQE: H2  r = 3.560 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.14864528 Ha
+  E_total (CASCI) = -0.93321419 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.05 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.62757500 Ha
+  E_FCI (dalam AS) = -0.93321419 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93321419 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.625978 (grad 0.0s) | E=-0.93321419 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.627575 ≠ E_GS=-0.933214
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93321419 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.16 s
+
+  E_HF              = -0.62757500 Ha
+  E_CASCI           = -0.93321419 Ha
+  E_VQE             = -0.93321419 Ha
+  E_FCI (dlm AS)    = -0.93321419 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.99e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93321419 Ha  ← referensi literatur
+  Error vs FCI(full)= 7.99e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 5/16
+
+============================================================
+  VQE: H2  r = 3.747 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.14123947 Ha
+  E_total (CASCI) = -0.93318671 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.62146857 Ha
+  E_FCI (dalam AS) = -0.93318671 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93318671 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.633374 (grad 0.0s) | E=-0.93318671 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.621469 ≠ E_GS=-0.933187
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93318671 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.62146857 Ha
+  E_CASCI           = -0.93318671 Ha
+  E_VQE             = -0.93318671 Ha
+  E_FCI (dlm AS)    = -0.93318671 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.66e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93318671 Ha  ← referensi literatur
+  Error vs FCI(full)= 6.77e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 6/16
+
+============================================================
+  VQE: H2  r = 3.933 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.13453658 Ha
+  E_total (CASCI) = -0.93317397 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.06 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.61644958 Ha
+  E_FCI (dalam AS) = -0.93317397 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93317397 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.640072 (grad 0.0s) | E=-0.93317397 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.616450 ≠ E_GS=-0.933174
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93317397 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.61644958 Ha
+  E_CASCI           = -0.93317397 Ha
+  E_VQE             = -0.93317397 Ha
+  E_FCI (dlm AS)    = -0.93317397 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.55e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93317397 Ha  ← referensi literatur
+  Error vs FCI(full)= 5.55e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 7/16
+
+============================================================
+  VQE: H2  r = 4.120 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.12844107 Ha
+  E_total (CASCI) = -0.93316819 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.61226224 Ha
+  E_FCI (dalam AS) = -0.93316819 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316819 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.646166 (grad 0.0s) | E=-0.93316819 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.612262 ≠ E_GS=-0.933168
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316819 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.18 s
+
+  E_HF              = -0.61226224 Ha
+  E_CASCI           = -0.93316819 Ha
+  E_VQE             = -0.93316819 Ha
+  E_FCI (dlm AS)    = -0.93316819 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.00e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316819 Ha  ← referensi literatur
+  Error vs FCI(full)= 5.77e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 8/16
+
+============================================================
+  VQE: H2  r = 4.307 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.12287397 Ha
+  E_total (CASCI) = -0.93316561 Ha
+  FermionicOp suku: 37
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.06 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.60871069 Ha
+  E_FCI (dalam AS) = -0.93316561 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316561 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.651732 (grad 0.0s) | E=-0.93316561 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.608711 ≠ E_GS=-0.933166
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316561 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.60871069 Ha
+  E_CASCI           = -0.93316561 Ha
+  E_VQE             = -0.93316561 Ha
+  E_FCI (dlm AS)    = -0.93316561 Ha  ← batas VQE
+  Error vs FCI(AS)  = 1.11e-14 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316561 Ha  ← referensi literatur
+  Error vs FCI(full)= 1.10e-14 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 9/16
+
+============================================================
+  VQE: H2  r = 4.493 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.11776941 Ha
+  E_total (CASCI) = -0.93316450 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.11 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.60564776 Ha
+  E_FCI (dalam AS) = -0.93316450 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316450 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.656837 (grad 0.0s) | E=-0.93316450 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.605648 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316450 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.19 s
+
+  E_HF              = -0.60564776 Ha
+  E_CASCI           = -0.93316450 Ha
+  E_VQE             = -0.93316450 Ha
+  E_FCI (dlm AS)    = -0.93316450 Ha  ← batas VQE
+  Error vs FCI(AS)  = 1.31e-14 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316450 Ha  ← referensi literatur
+  Error vs FCI(full)= 1.34e-14 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.4s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 10/16
+
+============================================================
+  VQE: H2  r = 4.680 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.11307205 Ha
+  E_total (CASCI) = -0.93316402 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.60296420 Ha
+  E_FCI (dalam AS) = -0.93316402 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316402 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.661534 (grad 0.0s) | E=-0.93316402 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.602964 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316402 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.60296420 Ha
+  E_CASCI           = -0.93316402 Ha
+  E_VQE             = -0.93316402 Ha
+  E_FCI (dlm AS)    = -0.93316402 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.88e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316402 Ha  ← referensi literatur
+  Error vs FCI(full)= 6.22e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 11/16
+
+============================================================
+  VQE: H2  r = 4.867 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.10873504 Ha
+  E_total (CASCI) = -0.93316382 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.60057927 Ha
+  E_FCI (dalam AS) = -0.93316382 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316382 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.665871 (grad 0.0s) | E=-0.93316382 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.600579 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316382 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.18 s
+
+  E_HF              = -0.60057927 Ha
+  E_CASCI           = -0.93316382 Ha
+  E_VQE             = -0.93316382 Ha
+  E_FCI (dlm AS)    = -0.93316382 Ha  ← batas VQE
+  Error vs FCI(AS)  = 9.33e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316382 Ha  ← referensi literatur
+  Error vs FCI(full)= 9.10e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 12/16
+
+============================================================
+  VQE: H2  r = 5.053 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.10471845 Ha
+  E_total (CASCI) = -0.93316375 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.59843330 Ha
+  E_FCI (dalam AS) = -0.93316375 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316375 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.669888 (grad 0.0s) | E=-0.93316375 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.598433 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316375 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.59843330 Ha
+  E_CASCI           = -0.93316375 Ha
+  E_VQE             = -0.93316375 Ha
+  E_FCI (dlm AS)    = -0.93316375 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.00e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316375 Ha  ← referensi literatur
+  Error vs FCI(full)= 6.11e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 13/16
+
+============================================================
+  VQE: H2  r = 5.240 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.10098802 Ha
+  E_total (CASCI) = -0.93316372 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.10 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.59648201 Ha
+  E_FCI (dalam AS) = -0.93316372 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316372 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.673618 (grad 0.0s) | E=-0.93316372 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.596482 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316372 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.59648201 Ha
+  E_CASCI           = -0.93316372 Ha
+  E_VQE             = -0.93316372 Ha
+  E_FCI (dlm AS)    = -0.93316372 Ha  ← batas VQE
+  Error vs FCI(AS)  = 5.77e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316372 Ha  ← referensi literatur
+  Error vs FCI(full)= 5.88e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 14/16
+
+============================================================
+  VQE: H2  r = 5.427 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.09751423 Ha
+  E_total (CASCI) = -0.93316371 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.12 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.59469229 Ha
+  E_FCI (dalam AS) = -0.93316371 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316371 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.677092 (grad 0.0s) | E=-0.93316371 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.594692 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316371 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.59469229 Ha
+  E_CASCI           = -0.93316371 Ha
+  E_VQE             = -0.93316371 Ha
+  E_FCI (dlm AS)    = -0.93316371 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.44e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316371 Ha  ← referensi literatur
+  Error vs FCI(full)= 5.77e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.4s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 15/16
+
+============================================================
+  VQE: H2  r = 5.613 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.09427147 Ha
+  E_total (CASCI) = -0.93316370 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.59303914 Ha
+  E_FCI (dalam AS) = -0.93316370 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316370 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.680334 (grad 0.0s) | E=-0.93316370 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.593039 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316370 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.17 s
+
+  E_HF              = -0.59303914 Ha
+  E_CASCI           = -0.93316370 Ha
+  E_VQE             = -0.93316370 Ha
+  E_FCI (dlm AS)    = -0.93316370 Ha  ← batas VQE
+  Error vs FCI(AS)  = 6.22e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316370 Ha  ← referensi literatur
+  Error vs FCI(full)= 5.88e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Titik 16/16
+
+============================================================
+  VQE: H2  r = 5.800 Å
+  Method : CASCI | Ansatz : ADAPT-VQE | Encoding : JW | Optimizer : L-BFGS-B
+============================================================
+[Hamiltonian] CASCI CAS(2,2) basis=sto-3g ...
+  E_core         = 0.09123745 Ha
+  E_total (CASCI) = -0.93316370 Ha
+  FermionicOp suku: 69
+  Encoding: JW
+  Jumlah qubit : 4
+  Jumlah suku  : 15
+  [Timing] Hamiltonian : 0.07 s
+[ADAPT-VQE] Pool: 4 operator spin-conserving (5 ditolak) (n_so=4, singles+doubles) [via FermionicOp+mapper, konsisten dgn Hamiltonian]
+  [Timing] Build ansatz: 0.01 s
+[InitState] HF state: 4 qubit, 2 elektron aktif, encoding=JW
+[InitState] ⟨HF|H|HF⟩ = -0.59150340 Ha
+  E_FCI (dalam AS) = -0.93316370 Ha  ← batas VQE
+  E_FCI (penuh)    = -0.93316370 Ha  ← referensi literatur
+  Gap AS vs penuh  = 0.00 mHa  (tidak bisa dikurangi VQE)
+[Optimizer] Menggunakan: L-BFGS-B
+  [ADAPT iter   1] max|grad|=0.683368 (grad 0.0s) | E=-0.93316370 Ha  ΔE=9.33e-01 | opt 0.1s | iter 0.1s
+  [ADAPT iter   2] max|grad|=0.000000 (grad 0.0s) → Konvergen grad (< 1e-05)
+  [WARN] Semua gradien nol tapi E_HF=-0.591503 ≠ E_GS=-0.933164
+  [WARN] Kemungkinan bug pool/gradien. Cek konvensi operator.
+
+[ADAPT-VQE] Selesai: 1 iter | 1 op | E=-0.93316370 Ha | total 0.2s (grad avg 0.0s, opt avg 0.1s)
+  [ADAPT-VQE] Gap vs referensi (FCI): 0.00 mHa (toleransi: 5 mHa)
+  [Timing] Optimasi    : 0.16 s
+
+  E_HF              = -0.59150340 Ha
+  E_CASCI           = -0.93316370 Ha
+  E_VQE             = -0.93316370 Ha
+  E_FCI (dlm AS)    = -0.93316370 Ha  ← batas VQE
+  Error vs FCI(AS)  = 7.22e-15 Ha  [✓ chem. acc.]
+  E_FCI (penuh)     = -0.93316370 Ha  ← referensi literatur
+  Error vs FCI(full)= 6.88e-15 Ha  [✓]
+  Gap AS vs full    = 0.00 mHa  (di luar jangkauan VQE)
+
+  ┌─ Timing breakdown ──────────────────────────────
+  │  Hamiltonian build : 0.1s
+  │  Ansatz build      : 0.0s
+  │  Optimasi total    : 0.2s
+  │    └ ADAPT iter   : 1  (grad avg 0.0s, opt avg 0.1s)
+  │  FCI reference     : 0.0s
+  └─ TOTAL             : 0.3s
+  n_qubit=4 | n_param=1
+
+[PES Scan] Selesai: 2026-07-08 14:34:48
+[PES Scan] Hasil disimpan: /mgpfs/home/nhandayani/vqe_hybrid/output/H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+
+  r (Å)     E_VQE (Ha)     E_FCI (Ha)  Error (Ha)  CA  n_op    t_opt  t_total
+─────────────────────────────────────────────────────────────────────────────
+  3.000    -0.93363184    -0.93363184    9.55e-15   ✓     1     0.2s     0.4s
+  3.187    -0.93339159    -0.93339159    6.99e-15   ✓     1     0.2s     0.3s
+  3.373    -0.93327215    -0.93327215    8.66e-15   ✓     1     0.2s     0.3s
+  3.560    -0.93321419    -0.93321419    7.99e-15   ✓     1     0.2s     0.3s
+  3.747    -0.93318671    -0.93318671    7.66e-15   ✓     1     0.2s     0.3s
+  3.933    -0.93317397    -0.93317397    6.55e-15   ✓     1     0.2s     0.3s
+  4.120    -0.93316819    -0.93316819    6.00e-15   ✓     1     0.2s     0.3s
+  4.307    -0.93316561    -0.93316561    1.11e-14   ✓     1     0.2s     0.3s
+  4.493    -0.93316450    -0.93316450    1.31e-14   ✓     1     0.2s     0.4s
+  4.680    -0.93316402    -0.93316402    6.88e-15   ✓     1     0.2s     0.3s
+  4.867    -0.93316382    -0.93316382    9.33e-15   ✓     1     0.2s     0.3s
+  5.053    -0.93316375    -0.93316375    6.00e-15   ✓     1     0.2s     0.3s
+  5.240    -0.93316372    -0.93316372    5.77e-15   ✓     1     0.2s     0.3s
+  5.427    -0.93316371    -0.93316371    6.44e-15   ✓     1     0.2s     0.4s
+  5.613    -0.93316370    -0.93316370    6.22e-15   ✓     1     0.2s     0.3s
+  5.800    -0.93316370    -0.93316370    7.22e-15   ✓     1     0.2s     0.3s
+─────────────────────────────────────────────────────────────────────────────
+  TOTAL                                                         2.8s     4.9s
+
+[PES Scan] Waktu program keseluruhan :    4.9s
+[PES Scan] Total waktu optimasi      :    2.8s
+[RUN] VQE selesai.
+[RUN] Cek output: ls /mgpfs/home/nhandayani/vqe_hybrid/output
+total 98K
+drwxr-xr-x 2 nhandayani student 4.0K Jul  7 08:33 0,2-3,0
+-rw-r--r-- 1 nhandayani student  96K Jul  7 23:18 CH4_CASCI_CAS(4,4)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+drwxr-xr-x 2 nhandayani student 4.0K Jul  7 08:33 fix bgt
+-rw-r--r-- 1 nhandayani student  22K Jul  8 14:34 H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+drwxr-xr-x 2 nhandayani student 4.0K Jul  3 18:39 ok
+drwxr-xr-x 2 nhandayani student 4.0K Jun 30 13:16 raw
+
+[PLOT] Membuat plot PES dan error ...
+[Plot] Memuat 16 / 16 titik valid dari /mgpfs/home/nhandayani/vqe_hybrid/output/H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_pes.json
+[Plot] PES tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_pes.jpg
+[Plot] Error plot tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_error.jpg
+[Plot] Konvergensi tersimpan: /mgpfs/home/nhandayani/vqe_hybrid/plot/H2_CASCI_CAS(2,2)_ADAPT-VQE_JW_L-BFGS-B_convergence_req.jpg
